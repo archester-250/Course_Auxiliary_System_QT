@@ -10,7 +10,7 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-include_directories(F:/vcpkg-master/installed/x64-windows/include/eigen3)
+include_directories(D:/0.CODES/Course_Auxiliary_System/eigen-3.4.0)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
@@ -18,6 +18,10 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 set(TS_FILES Course_Auxiliary_System_QT_zh_CN.ts)
 
 set(Course_Auxiliary_System_QT
+  addActivity.ui
+  addClock.ui
+  seeallActivities.ui
+  seeTodayActivities.ui
   main.cpp
   mainwindow.cpp
   mainwindow.h
