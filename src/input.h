@@ -1,6 +1,9 @@
-#ifndef INPUT_H
+ï»¿#ifndef INPUT_H
 #define INPUT_H
+#include "src/utils.h"
 #include <conio.h>
+#include <iostream>
+#include <ostream>
 #include <stdio.h>
 #include <string>
 using namespace std;
@@ -8,7 +11,7 @@ using namespace std;
 extern Time modtime;
 
 template <typename T> T Input() {
-    //TODO£ºÊäÈë¸ñÊ½´íÎóÅ×³öÒì³£
+    //TODOï¼šè¾“å…¥æ ¼å¼é”™è¯¯æŠ›å‡ºå¼‚å¸¸
     modtime.pause();
     T in;
     cin >> in;
@@ -27,7 +30,7 @@ public:
         bool flag = true;
         do
         {
-            if(!flag) cout << "ÊäÈëµÄ²»ÊÇÊý×Ö,ÇëÖØÐÂÊäÈë!" << endl;
+            if(!flag) cout << "è¾“å…¥çš„ä¸æ˜¯æ•°å­—,è¯·é‡æ–°è¾“å…¥!" << endl;
             flag = false;
             while(!_kbhit());
             op = getch();

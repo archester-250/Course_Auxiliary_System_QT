@@ -1,4 +1,4 @@
-#ifndef COURSE_AUXILIARY_SYSTEM_UTILS_H
+ï»¿#ifndef COURSE_AUXILIARY_SYSTEM_UTILS_H
 #define COURSE_AUXILIARY_SYSTEM_UTILS_H
 #include "hashMap.h"
 #include "MD5.h"
@@ -10,7 +10,7 @@
 #include <io.h>
 
 #define SYS_TIME_BIAS_TIMES 3000
-//Ê±¼ä±¶ÂÊ£¬ÏÖÔÚÊÇ3ÃëÒ»Ğ¡Ê±
+//æ—¶é—´å€ç‡ï¼Œç°åœ¨æ˜¯3ç§’ä¸€å°æ—¶
 
 using namespace std;
 
@@ -50,7 +50,7 @@ public:
         return 28;
     }
 
-    Time desc(int h) {//????h§³?
+    Time desc(int h) {//????hĞ¡?
         while (h--) {
             if (hr == 0) {
                 hr = 24;
@@ -91,12 +91,12 @@ public:
 
     int calculateWeekDay() const {
         int m = mn, d = day, y = yr;
-        if(m==1||m==2) //°ÑÒ»ÔÂºÍ¶şÔÂ»»Ëã³ÉÉÏÒ»ÄêµÄÊ®ÈıÔÂºÍÊÇËÄÔÂ
+        if(m==1||m==2) //æŠŠä¸€æœˆå’ŒäºŒæœˆæ¢ç®—æˆä¸Šä¸€å¹´çš„åä¸‰æœˆå’Œæ˜¯å››æœˆ
         {
             m+=12;
             y--;
         }
-        int weekDay = (d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7;//Çó³öĞÇÆÚ¼¸
+        int weekDay = (d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7;//æ±‚å‡ºæ˜ŸæœŸå‡ 
         return weekDay;
     }
 
@@ -134,11 +134,11 @@ class OurStr
 {
     public:
     /**
-     * @brief ×Ö·û´®±È½Ïº¯Êı
+     * @brief å­—ç¬¦ä¸²æ¯”è¾ƒå‡½æ•°
      * 
      * @param s1 
      * @param s2 
-     * @return int -1Ê±s1<s2,0Ê±×Ö·û´®ÏàµÈ,1Ê±s1>s2
+     * @return int -1æ—¶s1<s2,0æ—¶å­—ç¬¦ä¸²ç›¸ç­‰,1æ—¶s1>s2
      */
         static int StrCmp(string s1, string s2)
         {
@@ -180,32 +180,32 @@ class Files
     public:   
         static void getFiles(string path, vector<string>& files)
         {
-            //ÎÄ¼ş¾ä±ú  
+            //æ–‡ä»¶å¥æŸ„  
             long   hFile = 0;
-            //ÎÄ¼şĞÅÏ¢£¬ÉùÃ÷Ò»¸ö´æ´¢ÎÄ¼şĞÅÏ¢µÄ½á¹¹Ìå  
+            //æ–‡ä»¶ä¿¡æ¯ï¼Œå£°æ˜ä¸€ä¸ªå­˜å‚¨æ–‡ä»¶ä¿¡æ¯çš„ç»“æ„ä½“  
             struct _finddata_t fileinfo;
-            string p;//×Ö·û´®£¬´æ·ÅÂ·¾¶
-            if ((hFile = _findfirst(p.assign(path).append("\\*").c_str(), &fileinfo)) != -1)//Èô²éÕÒ³É¹¦£¬Ôò½øÈë
+            string p;//å­—ç¬¦ä¸²ï¼Œå­˜æ”¾è·¯å¾„
+            if ((hFile = _findfirst(p.assign(path).append("\\*").c_str(), &fileinfo)) != -1)//è‹¥æŸ¥æ‰¾æˆåŠŸï¼Œåˆ™è¿›å…¥
             {
                 do
                 {
-                    //Èç¹ûÊÇÄ¿Â¼,µü´úÖ®£¨¼´ÎÄ¼ş¼ĞÄÚ»¹ÓĞÎÄ¼ş¼Ğ£©  
+                    //å¦‚æœæ˜¯ç›®å½•,è¿­ä»£ä¹‹ï¼ˆå³æ–‡ä»¶å¤¹å†…è¿˜æœ‰æ–‡ä»¶å¤¹ï¼‰  
                     if ((fileinfo.attrib &  _A_SUBDIR))
                     {
-                        //ÎÄ¼şÃû²»µÈÓÚ"."&&ÎÄ¼şÃû²»µÈÓÚ".."
-                        //.±íÊ¾µ±Ç°Ä¿Â¼
-                        //..±íÊ¾µ±Ç°Ä¿Â¼µÄ¸¸Ä¿Â¼
-                        //ÅĞ¶ÏÊ±£¬Á½Õß¶¼ÒªºöÂÔ£¬²»È»¾ÍÎŞÏŞµİ¹éÌø²»³öÈ¥ÁË£¡
+                        //æ–‡ä»¶åä¸ç­‰äº"."&&æ–‡ä»¶åä¸ç­‰äº".."
+                        //.è¡¨ç¤ºå½“å‰ç›®å½•
+                        //..è¡¨ç¤ºå½“å‰ç›®å½•çš„çˆ¶ç›®å½•
+                        //åˆ¤æ–­æ—¶ï¼Œä¸¤è€…éƒ½è¦å¿½ç•¥ï¼Œä¸ç„¶å°±æ— é™é€’å½’è·³ä¸å‡ºå»äº†ï¼
                         if (strcmp(fileinfo.name, ".") != 0 && strcmp(fileinfo.name, "..") != 0)
                             getFiles(p.assign(path).append("\\").append(fileinfo.name), files);
                     }
-                    //Èç¹û²»ÊÇ,¼ÓÈëÁĞ±í  
+                    //å¦‚æœä¸æ˜¯,åŠ å…¥åˆ—è¡¨  
                     else
                     {
                         files.push_back(p.assign(path).append("\\").append(fileinfo.name));
                     }
                 } while (_findnext(hFile, &fileinfo) == 0);
-                //_findcloseº¯Êı½áÊø²éÕÒ
+                //_findcloseå‡½æ•°ç»“æŸæŸ¥æ‰¾
                 _findclose(hFile);
             }
         }

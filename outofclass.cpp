@@ -1,4 +1,4 @@
-#include "outofclass.h"
+﻿#include "outofclass.h"
 #include "ui_outofclass.h"
 
 OutOfClass::OutOfClass(QWidget *parent) :
@@ -11,4 +11,9 @@ OutOfClass::OutOfClass(QWidget *parent) :
 OutOfClass::~OutOfClass()
 {
     delete ui;
+}
+
+void OutOfClass::receiveName(QString name)
+{
+    this->name = name;
 }

@@ -1,4 +1,4 @@
-//
+ï»¿//
 // Created by ll on 2022/4/15.
 //
 #include "utils.h"
@@ -15,7 +15,7 @@ void Time::recover() {
 }
 
 string Time::toString() {
-    return to_string(yr) + "Äê" + to_string(mn) + "ÔÂ" + to_string(day) + "ÈÕ" + to_string(hr) + "Ê± ";
+    return to_string(yr) + "å¹´" + to_string(mn) + "æœˆ" + to_string(day) + "æ—¥" + to_string(hr) + "æ—¶ ";
 }
 
 void Time::incre(int h) {
@@ -38,12 +38,12 @@ void Time::incre(int h) {
             auto clockCheck = student->getClocks()->get(modtime.timeStamp());
             if (clockCheck->first) {
                 for (int i = 0; i < clockCheck->second.info->size; i++)
-                    cout << "[ÊÂ¼þÌáÐÑ]" << clockCheck->second.info->get(i) << endl;
+                    cout << "[äº‹ä»¶æé†’]" << clockCheck->second.info->get(i) << endl;
             }
         }
     }
     sys_time_bias_times = SYS_TIME_BIAS_TIMES;
-    cout << "[µ±Ç°Ê±¼ä]" << toString() << "ÐÇÆÚ" << calculateWeekDay() << endl;
+    cout << "[å½“å‰æ—¶é—´]" << toString() << "æ˜ŸæœŸ" << calculateWeekDay() << endl;
 }
 
 Clock::Clock() {}

@@ -1,4 +1,4 @@
-#ifndef THREAD_H
+﻿#ifndef THREAD_H
 #define THREAD_H
 #include <stdlib.h>
 #include <stdio.h>
@@ -27,7 +27,7 @@ void *wrapper(void *arg) {
 void create(void fn(int)) {
   assert(tptr - tpool < NTHREAD);
   *tptr = (struct thread) {
-    .id = tptr - tpool + 1,
+    .id = static_cast<int>(tptr - tpool + 1),
     .status = T_LIVE,
     .entry = fn,
   };

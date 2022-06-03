@@ -1,4 +1,4 @@
-#ifndef SYSTEMCHOOSE_H
+﻿#ifndef SYSTEMCHOOSE_H
 #define SYSTEMCHOOSE_H
 
 #include <QDialog>
@@ -17,13 +17,19 @@ public:
     explicit SystemChoose(QWidget *parent = nullptr);
     ~SystemChoose();
 
+signals:
+    void sendName(QString name);
+
 private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_2_clicked();
 
+    void receiveName(QString s);
+
 private:
     Ui::SystemChoose *ui;
+    QString name;
 };
 
 #endif // SYSTEMCHOOSE_H

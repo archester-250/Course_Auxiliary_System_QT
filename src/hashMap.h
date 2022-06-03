@@ -1,4 +1,4 @@
-//
+ï»¿//
 // Created by ll.md on 2022/4/8.
 //
 
@@ -34,7 +34,7 @@ public:
         if (i < size)
             return vals[i];
         else {
-            cout << "³öÏÖ´íÎó£¬ÇëÁªÏµ¿ª·¢Õß\n";
+            cout << "å‡ºçŽ°é”™è¯¯ï¼Œè¯·è”ç³»å¼€å‘è€…\n";
             return vals[0];
         }
     }
@@ -44,7 +44,7 @@ public:
         try {
             vals[size] = t;
         } catch (...){
-            cout << "³öÏÖ´íÎó£¬ÇëÁªÏµ¿ª·¢Õß\n";
+            cout << "å‡ºçŽ°é”™è¯¯ï¼Œè¯·è”ç³»å¼€å‘è€…\n";
             return false;
         }
         size++;
@@ -136,7 +136,7 @@ public:
     ~HashMap();
 
 private:
-    HashNode<T1, T2> **table;//Ö¸ÕëÊý×é
+    HashNode<T1, T2> **table;//æŒ‡é’ˆæ•°ç»„
     int size{};
     T2* valNull = new T2();
 };
@@ -148,7 +148,7 @@ int HashMap<T1, T2>::put(T1 _key, T2 _value) {
     while (node) {
         if (node->key == _key) {
             node->value = _value;
-            return -1;//ÒÑÓÐ¸ÃÖµ,[ÐÞ¸Ä]
+            return -1;//å·²æœ‰è¯¥å€¼,[ä¿®æ”¹]
         }
         node = node->next;
     }

@@ -1,4 +1,4 @@
-#ifndef OUTOFCLASS_H
+﻿#ifndef OUTOFCLASS_H
 #define OUTOFCLASS_H
 
 #include <QDialog>
@@ -15,8 +15,12 @@ public:
     explicit OutOfClass(QWidget *parent = nullptr);
     ~OutOfClass();
 
+private slots:
+    void receiveName(QString name);
+
 private:
     Ui::OutOfClass *ui;
+    QString name;
 };
 
 #endif // OUTOFCLASS_H

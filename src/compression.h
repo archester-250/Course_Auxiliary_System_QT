@@ -1,7 +1,7 @@
-/**
+ï»¿/**
  * @file compression.h
  * @author your name (you@domain.com)
- * @brief Ñ¹ËõËã·¨ÊµÏÖ
+ * @brief å‹ç¼©ç®—æ³•å®ç°
  * @version 0.1
  * @date 2022-05-22
  * 
@@ -13,11 +13,11 @@
 #include <string.h>
 #include <string>
 #include "utils.h"
-#define N 128//128¸ö¿É×ª³É×Ö·ûµÄÊı×Ö
-typedef int WeightType;//È¨ÖØµÄÀàĞÍ
+#define N 128//128ä¸ªå¯è½¬æˆå­—ç¬¦çš„æ•°å­—
+typedef int WeightType;//æƒé‡çš„ç±»å‹
 using namespace std;
 /**
- * @brief huffmanÊ÷´æ´¢µ¥Ôª
+ * @brief huffmanæ ‘å­˜å‚¨å•å…ƒ
  * 
  */
 typedef struct
@@ -26,7 +26,7 @@ typedef struct
     int parent, lc, rc;
 }HTNODE;
 /**
- * @brief ´æ´¢ºóN - 1¸öÊ÷µÄ×óÓÒº¢×ÓµÄ´æ´¢µ¥Ôª
+ * @brief å­˜å‚¨åN - 1ä¸ªæ ‘çš„å·¦å³å­©å­çš„å­˜å‚¨å•å…ƒ
  * 
  */
 typedef struct
@@ -34,7 +34,7 @@ typedef struct
     int lc, rc;
 }TREENODE;
 /**
- * @brief ²ÎÊıµÄ½á¹¹Ìå
+ * @brief å‚æ•°çš„ç»“æ„ä½“
  * 
  */
 typedef struct
@@ -43,7 +43,7 @@ typedef struct
     int length;
     int * startpos;
 }ARGS;
-typedef HTNODE HuffmanTree[2 * N];//huffmanÊ÷µÄ´æ´¢¿Õ¼ä
+typedef HTNODE HuffmanTree[2 * N];//huffmanæ ‘çš„å­˜å‚¨ç©ºé—´
 class compression
 {
 private:
@@ -52,113 +52,113 @@ public:
     compression(/* args */);
     ~compression();
     /**
-     * @brief ±àÂëµÄ×ÜÖ´ĞĞº¯Êı
+     * @brief ç¼–ç çš„æ€»æ‰§è¡Œå‡½æ•°
      * 
      */
     bool Code(string inRoad, string outRoad);
     /**
-     * @brief ´´½¨Ò»¿Å¹ş·òÂüÊ÷
+     * @brief åˆ›å»ºä¸€é¢—å“ˆå¤«æ›¼æ ‘
      * 
-     * @param ht ÒÑ¾­³õÊ¼»¯µÄ¹ş·òÂüÊ÷
+     * @param ht å·²ç»åˆå§‹åŒ–çš„å“ˆå¤«æ›¼æ ‘
      */
     void CreateHT(HuffmanTree ht);
     /**
-     * @brief ¹ş·òÂü±àÂë´´½¨Âë±í
+     * @brief å“ˆå¤«æ›¼ç¼–ç åˆ›å»ºç è¡¨
      * 
-     * @param HC Âë±í¶şÎ¬¶¯Ì¬Êı×é
-     * @param cd ¸¨ÖúÊı×é
-     * @param ht ÒÑ¾­¹¹½¨µÄ¹ş·òÂüÊ÷
+     * @param HC ç è¡¨äºŒç»´åŠ¨æ€æ•°ç»„
+     * @param cd è¾…åŠ©æ•°ç»„
+     * @param ht å·²ç»æ„å»ºçš„å“ˆå¤«æ›¼æ ‘
      */
     void HuffmanCoding(char ** HC, char * cd, HuffmanTree ht);
     /**
-     * @brief ´òÓ¡Âë±í£¨²âÊÔÓÃ£©
+     * @brief æ‰“å°ç è¡¨ï¼ˆæµ‹è¯•ç”¨ï¼‰
      * 
-     * @param HC Âë±í
+     * @param HC ç è¡¨
      */
     void PrintCodeList(char ** HC);
     /**
-     * @brief ½âÂëµÄ×ÜÖ´ĞĞº¯Êı
+     * @brief è§£ç çš„æ€»æ‰§è¡Œå‡½æ•°
      * 
      */
     bool Decode(string inRoad, string outRoad);
     /**
-     * @brief µİ¹é´´½¨¹ş·òÂüÊ÷
+     * @brief é€’å½’åˆ›å»ºå“ˆå¤«æ›¼æ ‘
      * 
-     * @param tempTree ´æ´¢½âÂëºóµÄ×óÓÒ×ÓÊ÷ĞÅÏ¢
-     * @param de_HC Âë±í
-     * @param cd ¸¨ÖúÊı×é
-     * @param depth µİ¹éÉî¶È
-     * @param index ¸Ã²ãÒª´¦ÀíµÄ½áµãÏÂ±ê
+     * @param tempTree å­˜å‚¨è§£ç åçš„å·¦å³å­æ ‘ä¿¡æ¯
+     * @param de_HC ç è¡¨
+     * @param cd è¾…åŠ©æ•°ç»„
+     * @param depth é€’å½’æ·±åº¦
+     * @param index è¯¥å±‚è¦å¤„ç†çš„ç»“ç‚¹ä¸‹æ ‡
      */
     void Build_Tree(TREENODE * tempTree, char ** de_HC, char * cd, int depth, int index);
     /**
-     * @brief BMËã·¨
+     * @brief BMç®—æ³•
      * 
-     * @param target Ö÷´®
-     * @param pattern Ä£Ê½´®
-     * @param pos ´æ´¢Ä£Ê½´®³õÊ¼Î»ÖÃµÄÊı×é
-     * @param inx Êı×éÏÂ±ê
-     * @param posindex ÔÚÕû¸öÎÄ¼şÖĞµÄÎ»ÖÃ
+     * @param target ä¸»ä¸²
+     * @param pattern æ¨¡å¼ä¸²
+     * @param pos å­˜å‚¨æ¨¡å¼ä¸²åˆå§‹ä½ç½®çš„æ•°ç»„
+     * @param inx æ•°ç»„ä¸‹æ ‡
+     * @param posindex åœ¨æ•´ä¸ªæ–‡ä»¶ä¸­çš„ä½ç½®
      */
     void BM(char * target, char * pattern, int * pos, int &inx, int posindex);
     /**
-     * @brief BMËã·¨×Óº¯Êı£¬¹¹Ôì»µ×Ö·ûÊı×é
+     * @brief BMç®—æ³•å­å‡½æ•°ï¼Œæ„é€ åå­—ç¬¦æ•°ç»„
      * 
-     * @param pattern Ä£Ê½´®
-     * @param badChar »µ×Ö·ûÊı×é
+     * @param pattern æ¨¡å¼ä¸²
+     * @param badChar åå­—ç¬¦æ•°ç»„
      */
     void GenerateBadChar(char * pattern, int * badChar);
     /**
-     * @brief BMËã·¨×Óº¯Êı£¬¹¹ÔìºÃºó×ºÊı×é
+     * @brief BMç®—æ³•å­å‡½æ•°ï¼Œæ„é€ å¥½åç¼€æ•°ç»„
      * 
-     * @param pattern Ä£Ê½´®
-     * @param suffix ºó×ºÊı×é
-     * @param prefix Èç¹û¹«¹²ºó×º×Ó´®Ò²ÊÇÄ£Ê½´®µÄÇ°×º×Ó´®,ÔòÖµÎª1
+     * @param pattern æ¨¡å¼ä¸²
+     * @param suffix åç¼€æ•°ç»„
+     * @param prefix å¦‚æœå…¬å…±åç¼€å­ä¸²ä¹Ÿæ˜¯æ¨¡å¼ä¸²çš„å‰ç¼€å­ä¸²,åˆ™å€¼ä¸º1
      */
     void GenerateGoodSuffix(char * pattern, int * suffix, int * prefix);
     /**
-     * @brief BMËã·¨×Óº¯Êı£¬ÓÃºÃºó×ºÊı×éÒÆ¶¯Ö÷´®
+     * @brief BMç®—æ³•å­å‡½æ•°ï¼Œç”¨å¥½åç¼€æ•°ç»„ç§»åŠ¨ä¸»ä¸²
      * 
-     * @param badIndex »µ×Ö·û¶ÔÓ¦µÄÄ£Ê½´®ÖĞµÄ×Ö·ûÏÂ±ê
-     * @param plen Ä£Ê½´®³¤¶È
-     * @param suffix ºó×ºÊı×é
-     * @param prefix Èç¹û¹«¹²ºó×º×Ó´®Ò²ÊÇÄ£Ê½´®µÄÇ°×º×Ó´®,ÔòÖµÎª1
-     * @return int Ö÷´®ÓëÄ£Ê½´®µÚÒ»¸öÆ¥ÅäµÄ×Ö·ûµÄÎ»ÖÃ,ÎŞÔò·µ»Ø-1
+     * @param badIndex åå­—ç¬¦å¯¹åº”çš„æ¨¡å¼ä¸²ä¸­çš„å­—ç¬¦ä¸‹æ ‡
+     * @param plen æ¨¡å¼ä¸²é•¿åº¦
+     * @param suffix åç¼€æ•°ç»„
+     * @param prefix å¦‚æœå…¬å…±åç¼€å­ä¸²ä¹Ÿæ˜¯æ¨¡å¼ä¸²çš„å‰ç¼€å­ä¸²,åˆ™å€¼ä¸º1
+     * @return int ä¸»ä¸²ä¸æ¨¡å¼ä¸²ç¬¬ä¸€ä¸ªåŒ¹é…çš„å­—ç¬¦çš„ä½ç½®,æ— åˆ™è¿”å›-1
      */
     int MoveByGoodSuffix(int badIndex, int plen, int * suffix, int * prefix);
     /**
-     * @brief ÒÀ¾İÊäÈëµÄÖµËÑË÷Ô´ÎÄ¼ş
+     * @brief ä¾æ®è¾“å…¥çš„å€¼æœç´¢æºæ–‡ä»¶
      * 
      */
     void SearchOrigin();
     /**
-     * @brief ÒÀ¾İÊäÈëµÄÖµËÑË÷¶ş½øÖÆÎÄ¼ş
+     * @brief ä¾æ®è¾“å…¥çš„å€¼æœç´¢äºŒè¿›åˆ¶æ–‡ä»¶
      * 
      */
     void SearchBinary();
     /**
-     * @brief ËÑË÷¶ş½øÖÆÎÄ¼şÓÃµÄBMËã·¨
+     * @brief æœç´¢äºŒè¿›åˆ¶æ–‡ä»¶ç”¨çš„BMç®—æ³•
      * 
-     * @param target Ö÷´®
-     * @param pattern Ä£Ê½´®
-     * @param args ²ÎÊıµÄ½á¹¹Ìå£¬°üÀ¨posÊı×é£¬length£ºÒÑ´¦ÀíµÄ¶ş½øÖÆÊı×Ö¸öÊı£¬startpos:±íÃ÷Ô´ÎÄ¼şµÄÃ¿¸ö×Ö·û¶ÔÓ¦¶ş½øÖÆÎÄ¼şÖĞÒÔÎ»Îªµ¥Î»µÄµÚ¼¸Î»
-     * @param inx posÊı×éµÄÏÂ±ê
-     * @param index Ö÷´®ÖĞµÄÏÂ±ê
-     * @param floatflag startposÖĞµÄ¸¡±ê
+     * @param target ä¸»ä¸²
+     * @param pattern æ¨¡å¼ä¸²
+     * @param args å‚æ•°çš„ç»“æ„ä½“ï¼ŒåŒ…æ‹¬posæ•°ç»„ï¼Œlengthï¼šå·²å¤„ç†çš„äºŒè¿›åˆ¶æ•°å­—ä¸ªæ•°ï¼Œstartpos:è¡¨æ˜æºæ–‡ä»¶çš„æ¯ä¸ªå­—ç¬¦å¯¹åº”äºŒè¿›åˆ¶æ–‡ä»¶ä¸­ä»¥ä½ä¸ºå•ä½çš„ç¬¬å‡ ä½
+     * @param inx posæ•°ç»„çš„ä¸‹æ ‡
+     * @param index ä¸»ä¸²ä¸­çš„ä¸‹æ ‡
+     * @param floatflag startposä¸­çš„æµ®æ ‡
      */
     void BM_SearchBinary(char * target, char * pattern, ARGS args, int &inx,int &index, int &floatflag);
     /**
-     * @brief Éú³Éstartposº¯Êı
+     * @brief ç”Ÿæˆstartposå‡½æ•°
      * 
-     * @param startpos Ã÷Ô´ÎÄ¼şµÄÃ¿¸ö×Ö·û¶ÔÓ¦¶ş½øÖÆÎÄ¼şÖĞÒÔÎ»Îªµ¥Î»µÄµÚ¼¸Î»
-     * @param filename ÎÄ¼şÃû
+     * @param startpos æ˜æºæ–‡ä»¶çš„æ¯ä¸ªå­—ç¬¦å¯¹åº”äºŒè¿›åˆ¶æ–‡ä»¶ä¸­ä»¥ä½ä¸ºå•ä½çš„ç¬¬å‡ ä½
+     * @param filename æ–‡ä»¶å
      */
     void GenerateStartpos(int * startpos, char * filename);
     /**
-     * @brief ¼ì²éºó×ºÊÇ·ñÎª.wxl
+     * @brief æ£€æŸ¥åç¼€æ˜¯å¦ä¸º.wxl
      * 
-     * @param str ×Ö·û´®
-     * @return int ÊÇÎª1£¬²»ÊÇÎª0
+     * @param str å­—ç¬¦ä¸²
+     * @return int æ˜¯ä¸º1ï¼Œä¸æ˜¯ä¸º0
      */
     int judge_wxl(char * str);
 };

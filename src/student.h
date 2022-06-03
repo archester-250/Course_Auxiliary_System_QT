@@ -1,7 +1,7 @@
-/**
+ï»¿/**
  * @file student.h
  * @author your name (you@domain.com)
- * @brief Íê³ÉÑ§ÉúÀà£¬ÔÚÑ§ÉúÀàÏÂ¶¨ÒåÑ§ÉúµÄÒ»ÏµÁĞ²Ù×÷
+ * @brief å®Œæˆå­¦ç”Ÿç±»ï¼Œåœ¨å­¦ç”Ÿç±»ä¸‹å®šä¹‰å­¦ç”Ÿçš„ä¸€ç³»åˆ—æ“ä½œ
  * @version 0.1
  * @date 2022-03-17
  * 
@@ -68,31 +68,31 @@ public:
 
     void addClocks();
 
-    course searchCourse(course c[], int size, string name);//ËÑË÷¿Î³Ì¹¦ÄÜ
+    course searchCourse(course c[], int size, string name);//æœç´¢è¯¾ç¨‹åŠŸèƒ½
 
-    void showMenu();//ÏÔÊ¾Ñ§Éú²Ù×÷²Ëµ¥
+    void showMenu();//æ˜¾ç¤ºå­¦ç”Ÿæ“ä½œèœå•
 
-    void showTodayCourse();//ÏÔÊ¾½ñÌìµÄ¿Î³Ì
+    void showTodayCourse();//æ˜¾ç¤ºä»Šå¤©çš„è¯¾ç¨‹
 
     void showActivities(bool today);
 
     void courseTable();
 
-    void saveStuInfo();//±£´æÊı¾İÖÁÎÄ¼ş
+    void saveStuInfo();//ä¿å­˜æ•°æ®è‡³æ–‡ä»¶
 
-    int showCourseMenu();//ÏÔÊ¾¿Î³Ì²Ù×÷²Ëµ¥
+    int showCourseMenu();//æ˜¾ç¤ºè¯¾ç¨‹æ“ä½œèœå•
 
-    int showActivityMenu();//ÏÔÊ¾»î¶¯²Ù×÷²Ëµ¥
+    int showActivityMenu();//æ˜¾ç¤ºæ´»åŠ¨æ“ä½œèœå•
 
-    void InitStudent();//³õÊ¼»¯Ñ§ÉúĞÅÏ¢
+    void InitStudent();//åˆå§‹åŒ–å­¦ç”Ÿä¿¡æ¯
 
-    void showCourseDetail();//ÏÔÊ¾¿Î³ÌÏêÇé
+    void showCourseDetail();//æ˜¾ç¤ºè¯¾ç¨‹è¯¦æƒ…
 
-    void showCourseHw();//ÏÔÊ¾¿Î³Ì×÷Òµ
+    void showCourseHw();//æ˜¾ç¤ºè¯¾ç¨‹ä½œä¸š
 
-    void uploadHw();//ÉÏ´«×÷Òµ
+    void uploadHw();//ä¸Šä¼ ä½œä¸š
 
-    void showDoc();//ÏÔÊ¾×ÊÁÏ
+    void showDoc();//æ˜¾ç¤ºèµ„æ–™
 };
 
 #endif

@@ -1,4 +1,4 @@
-/**
+ï»¿/**
  * @file login.h
  * @author wxl (you@domain.com)
  * @brief 
@@ -42,8 +42,8 @@ private:
 public:
     static info dologin()
     {
-        printf("»¶Ó­Ê¹ÓÃ¿Î³Ì¸¨ÖúÏµÍ³£¡(ÊäÈë0ÍË³ö£©\n");
-        printf("ÇëÑ¡ÔñµÇÂ¼·½Ê½\n1¡¢Ñ§ÉúÓÃ»§\t2¡¢¹ÜÀíÔ±\t3¡¢×¢²áÑ§Éú\t4¡¢×¢²á¹ÜÀíÔ±\n(²»ĞèÒª´òenteràŞ!^_^)");
+        printf("æ¬¢è¿ä½¿ç”¨è¯¾ç¨‹è¾…åŠ©ç³»ç»Ÿï¼(è¾“å…¥0é€€å‡ºï¼‰\n");
+        printf("è¯·é€‰æ‹©ç™»å½•æ–¹å¼\n1ã€å­¦ç”Ÿç”¨æˆ·\t2ã€ç®¡ç†å‘˜\t3ã€æ³¨å†Œå­¦ç”Ÿ\t4ã€æ³¨å†Œç®¡ç†å‘˜\n(ä¸éœ€è¦æ‰“enterå™¢!^_^)");
         info inf;
         input in;
         int loginCode;
@@ -57,35 +57,35 @@ public:
             string username;
             do
             {
-                printf("ÇëÊäÈëÓÃ»§Ãû(²»ÄÜ³¬¹ı20Î»£¬ÖĞÎÄÒ»¸ö×ÖÕ¼2Î»):");
+                printf("è¯·è¾“å…¥ç”¨æˆ·å(ä¸èƒ½è¶…è¿‡20ä½ï¼Œä¸­æ–‡ä¸€ä¸ªå­—å 2ä½):");
                 username = Input<string>();
             } while (username.length() > 20);
             string password;
             do
             {
-                printf("ÇëÊäÈëÃÜÂë(²»ÄÜ³¬¹ı20Î»£¬ÖĞÎÄÒ»¸ö×ÖÕ¼2Î»):");
+                printf("è¯·è¾“å…¥å¯†ç (ä¸èƒ½è¶…è¿‡20ä½ï¼Œä¸­æ–‡ä¸€ä¸ªå­—å 2ä½):");
                 password = Input<string>();
             }while(password.length() > 20);
             if (match(username, password, loginCode))
             {
-                printf("µÇÂ½³É¹¦£¡\n");
+                printf("ç™»é™†æˆåŠŸï¼\n");
                 inf.notEnd = loginCode;
                 inf.user = username;
                 return inf;
             }
-            else printf("µÇÂ½Ê§°Ü£¡\n");
+            else printf("ç™»é™†å¤±è´¥ï¼\n");
         }
         else if (loginCode == 3 || loginCode == 4) {
             string username;
             do
             {
-                printf("ÇëÊäÈëÓÃ»§Ãû(²»ÄÜ³¬¹ı20Î»£¬ÖĞÎÄÒ»¸ö×ÖÕ¼2Î»):");
+                printf("è¯·è¾“å…¥ç”¨æˆ·å(ä¸èƒ½è¶…è¿‡20ä½ï¼Œä¸­æ–‡ä¸€ä¸ªå­—å 2ä½):");
                 username = Input<string>();
             } while (username.length() > 20);
             string password;
             do
             {
-                printf("ÇëÊäÈëÃÜÂë(²»ÄÜ³¬¹ı20Î»£¬ÖĞÎÄÒ»¸ö×ÖÕ¼2Î»):");
+                printf("è¯·è¾“å…¥å¯†ç (ä¸èƒ½è¶…è¿‡20ä½ï¼Œä¸­æ–‡ä¸€ä¸ªå­—å 2ä½):");
                 password = Input<string>();
             }while(password.length() > 20);
             writeIn(username, password, loginCode);

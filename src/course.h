@@ -1,7 +1,7 @@
-/**
+ï»¿/**
  * @file course.h
  * @author your name (you@domain.com)
- * @brief ¿Î³Ì¹ÜÀí¹¦ÄÜ£¬°üÀ¨ÔöÉ¾²é¸ÄĞÅÏ¢¡¢ÉÏ´«¸üĞÂÑ¹Ëõ×ÊÁÏµÈ¹¦ÄÜ
+ * @brief è¯¾ç¨‹ç®¡ç†åŠŸèƒ½ï¼ŒåŒ…æ‹¬å¢åˆ æŸ¥æ”¹ä¿¡æ¯ã€ä¸Šä¼ æ›´æ–°å‹ç¼©èµ„æ–™ç­‰åŠŸèƒ½
  * @version 0.1
  * @date 2022-03-17
  * 
@@ -23,15 +23,15 @@ extern void updateTime();
 
 struct course_time
 {
-    int week;//ÖÜ¼¸,·¶Î§0-6
-    int starthour;//¿ªÊ¼Ê±¼ä
-    int endhour;//½áÊøÊ±¼ä
+    int week;//å‘¨å‡ ,èŒƒå›´0-6
+    int starthour;//å¼€å§‹æ—¶é—´
+    int endhour;//ç»“æŸæ—¶é—´
 };
 
 struct hw_con
 {
     bool finish;
-    string road = "null";//½»µÄ×÷ÒµµÄÃû³Æ
+    string road = "null";//äº¤çš„ä½œä¸šçš„åç§°
     string MD5 = "null";
 };
 
@@ -46,14 +46,14 @@ private:
     course_time * time;
     int t_size;
     string address;
-    string * documents;//¿Î³Ì×ÊÁÏ
+    string * documents;//è¯¾ç¨‹èµ„æ–™
     int doc_size;
     string current;
-    string * homeWork;//ÏÔÊ¾µÄ×÷ÒµÃû³Æ
+    string * homeWork;//æ˜¾ç¤ºçš„ä½œä¸šåç§°
     int hw_size;
     string QQGroup;
     Time extime;
-    string exaddress;//-exÇ°×º£º¿¼ÊÔÏà¹ØĞÅÏ¢
+    string exaddress;//-exå‰ç¼€ï¼šè€ƒè¯•ç›¸å…³ä¿¡æ¯
     hw_con * finish_con;
     int finish_size;
 public:

@@ -1,4 +1,4 @@
-#ifndef INCLASS_H
+﻿#ifndef INCLASS_H
 #define INCLASS_H
 
 #include <QDialog>
@@ -8,6 +8,7 @@
 #include "seehomework.h"
 #include "uploadhomework.h"
 #include "openfile.h"
+#include "src/student.h"
 
 namespace Ui {
 class Inclass;
@@ -20,6 +21,9 @@ class Inclass : public QDialog
 public:
     explicit Inclass(QWidget *parent = nullptr);
     ~Inclass();
+
+signals:
+    void sendName(QString name);
 
 private slots:
     void on_pushButton_clicked();
@@ -34,8 +38,11 @@ private slots:
 
     void on_pushButton_6_clicked();
 
+    void receiveName(QString name);
+
 private:
     Ui::Inclass *ui;
+    QString name;
 };
 
 #endif // INCLASS_H

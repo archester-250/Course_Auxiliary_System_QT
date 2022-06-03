@@ -1,4 +1,4 @@
-#ifndef STUDENTLOGIN_H
+﻿#ifndef STUDENTLOGIN_H
 #define STUDENTLOGIN_H
 
 #include <QDialog>
@@ -17,6 +17,9 @@ class StudentLogin : public QDialog
 public:
     explicit StudentLogin(QWidget *parent = nullptr);
     ~StudentLogin();
+
+signals:
+    void sendName(QString s);
 
 private slots:
     void on_buttonBox_accepted();

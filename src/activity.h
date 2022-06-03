@@ -1,7 +1,7 @@
-/**
+ï»¿/**
  * @file activity.h
  * @author your name (you@domain.com)
- * @brief Íê³É¿ÎÍâ»î¶¯¹ÜÀí¹¦ÄÜ£¬°üÀ¨Éè¶¨ÄÖÖÓ¡¢ÔöÉ¾²é¸ÄÏà¹ØĞÅÏ¢¡¢¼ì²âÊÇ·ñÓĞÊ±¼äÖØµşµÈ
+ * @brief å®Œæˆè¯¾å¤–æ´»åŠ¨ç®¡ç†åŠŸèƒ½ï¼ŒåŒ…æ‹¬è®¾å®šé—¹é’Ÿã€å¢åˆ æŸ¥æ”¹ç›¸å…³ä¿¡æ¯ã€æ£€æµ‹æ˜¯å¦æœ‰æ—¶é—´é‡å ç­‰
  * @version 0.1
  * @date 2022-03-17
  * 
@@ -22,18 +22,18 @@ class Time;
 class Activity {
 private:
     Time startTime;
-    Time endTime;//»î¶¯ÆğÖ¹Ê±¼ä
+    Time endTime;//æ´»åŠ¨èµ·æ­¢æ—¶é—´
     string address;
     int clk;
     int memberCnt;
     Array<string>* members;
-    string description;//»î¶¯ÄÚÈİÃèÊö
+    string description;//æ´»åŠ¨å†…å®¹æè¿°
 
 public:
     virtual ~Activity();
     Activity();
 
-    // Get ºÍ Set ·½·¨
+    // Get å’Œ Set æ–¹æ³•
     const Time &getStartTime() const;
 
     void setStartTime(Time startTime);
