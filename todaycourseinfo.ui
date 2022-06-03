@@ -47,6 +47,16 @@
     <string>关闭</string>
    </property>
   </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>51</y>
+     <width>351</width>
+     <height>181</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

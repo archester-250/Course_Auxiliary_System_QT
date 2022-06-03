@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -7,7 +7,11 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
+    ifstream config("../database/config");
+    int init_time = 0;
+    config >> init_time;
+    modtime.inputTime(init_time);
+    config.close();
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {

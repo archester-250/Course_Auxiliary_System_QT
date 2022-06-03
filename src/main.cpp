@@ -1,13 +1,15 @@
-/**
+ï»¿/**
  * @file main.cpp
  * @author your name (you@domain.com)
- * @brief Ö÷³ÌÐò
+ * @brief ä¸»ç¨‹åº
  * @version 0.1
  * @date 2022-03-17
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
+#ifndef MAIN
+#define MAIN
 
 #define DEBUG
 #include "login.h"
@@ -29,12 +31,16 @@ Time modtime;
 int systime = clock();
 int sys_time_bias_times = SYS_TIME_BIAS_TIMES;
 
-void updateTime(){
+void updateTime()
+{
     if (clock() - systime > sys_time_bias_times){
         modtime.incre((clock() - systime) / sys_time_bias_times);
         systime = clock();
     }
 }
 
+
 streambuf *clogbuf = std::clog.rdbuf();
+
+#endif
 
