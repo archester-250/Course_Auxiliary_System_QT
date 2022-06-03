@@ -25,6 +25,8 @@ private slots:
 
     void on_lineEdit_editingFinished();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::OpenFile *ui;
     QString name;
