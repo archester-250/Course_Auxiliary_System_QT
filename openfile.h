@@ -1,7 +1,8 @@
-#ifndef OPENFILE_H
+﻿#ifndef OPENFILE_H
 #define OPENFILE_H
 
 #include <QDialog>
+#include "src/student.h"
 
 namespace Ui {
 class OpenFile;
@@ -20,8 +21,14 @@ private slots:
 
     void on_radioButton_2_clicked();
 
+    void receiveName(QString name);
+
+    void on_lineEdit_editingFinished();
+
 private:
     Ui::OpenFile *ui;
+    QString name;
+    course c;
 };
 
 #endif // OPENFILE_H

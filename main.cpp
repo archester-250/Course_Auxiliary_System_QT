@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     int init_time = 0;
     config >> init_time;
     modtime.inputTime(init_time);
+    updateTime();
     config.close();
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -23,5 +24,9 @@ int main(int argc, char *argv[])
     }
     MainWindow w;
     w.show();
-    return a.exec();
+    int con = a.exec();
+    ofstream _config("../database/config");
+    _config << modtime.timeStamp();
+    _config.close();
+    return con;
 }

@@ -16,9 +16,11 @@
 #include <cstring>
 #include <iostream>
 #include <fstream>
+#include <QMessageBox>
 #include "utils.h"
 #include "compression.h"
 #include "input.h"
+
 extern void updateTime();
 
 struct course_time

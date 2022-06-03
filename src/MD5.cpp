@@ -1,4 +1,4 @@
-#include "MD5.h"
+ï»¿#include "MD5.h"
 
 unsigned char PADDING[] = { 
 	0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -188,8 +188,8 @@ MD5_CTX * MD5::getContext()
 //     md5.MD5Update(md5.getContext(), encrypt, strlen((char*)encrypt));
 //     md5.MD5Final(md5.getContext(), decrypt);
 // 	md5.~MD5();
-// 	//Md5¼ÓÃÜºóµÄ32Î»½á¹û
-// 	printf("\n¼ÓÃÜÇ°:%s\n¼ÓÃÜºó32Î»:", encrypt);
+// 	//Md5åŠ å¯†åçš„32ä½ç»“æœ
+// 	printf("\nåŠ å¯†å‰:%s\nåŠ å¯†å32ä½:", encrypt);
 // 	for (i = 0; i<16; i++)
 // 	{
 // 		printf("%02x", decrypt[i]);  

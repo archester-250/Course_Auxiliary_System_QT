@@ -1,8 +1,10 @@
-#ifndef UPLOADHOMEWORK_H
+﻿#ifndef UPLOADHOMEWORK_H
 #define UPLOADHOMEWORK_H
 
 #include <QDialog>
 #include <QFileDialog>
+#include <QMessageBox>
+#include "src/student.h"
 
 namespace Ui {
 class UploadHomework;
@@ -19,9 +21,18 @@ public:
 private slots:
     void on_pushButton_2_clicked();
 
+    void receiveName(QString name);
+
+    void on_lineEdit_editingFinished();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::UploadHomework *ui;
     QString filename;
+    QString name;
+    course c;
+    string stuName;
 };
 
 #endif // UPLOADHOMEWORK_H

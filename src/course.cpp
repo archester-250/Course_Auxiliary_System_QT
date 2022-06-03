@@ -1,4 +1,4 @@
-#include "course.h"
+ï»¿#include "course.h"
 
 course::course( string name,
                 course_time * time,
@@ -14,7 +14,7 @@ course::course( string name,
                 string exaddress)
 {
     this->name = name;
-    this->time = new course_time[t_size];//¹¹Ôìº¯ÊıĞÂ½¨ÁíÒ»¸ö¶ÔÏó£¬¶ø·ÇÖ±½Ó¸³Öµ
+    this->time = new course_time[t_size];//æ„é€ å‡½æ•°æ–°å»ºå¦ä¸€ä¸ªå¯¹è±¡ï¼Œè€Œéç›´æ¥èµ‹å€¼
     this->t_size = t_size;
     for(int i = 0; i < t_size; i++)
     {
@@ -117,7 +117,7 @@ course& course::operator =(const course& c)
     exaddress = c.exaddress;
     QQGroup = c.QQGroup;
     return *this;
-}//Ê¹ÓÃÁËÉî¿½±´
+}//ä½¿ç”¨äº†æ·±æ‹·è´
 
 string course::getName(){return name;}
 void course::setName(string name){this->name = name;}
@@ -203,7 +203,7 @@ int course::getFinishSize(){return finish_size;}
 void course::setFinishSize(int size){this->finish_size = size;}
 
 /**
- * @brief ÉÏ´«Ñ§Éú×÷Òµ
+ * @brief ä¸Šä¼ å­¦ç”Ÿä½œä¸š
  * 
  * @param road 
  * @return string 
@@ -229,25 +229,22 @@ void course::uploadHomework(string road, string stuName, int no)
     }
     if(!OurStr::StrCmp(md5str, finish_con[no].MD5))
     {
-        cout << "ÒÑ¾­ÉÏ´«¹ı¸Ã×÷Òµ£¬ÇëÎğÖØ¸´ÉÏ´«£¡" << endl;
+        QMessageBox::information(NULL, "Error", "å·²ä¸Šä¼ è¿‡é‡å¤æ–‡ä»¶ï¼Œè¯·å‹¿é‡å¤ä¸Šä¼ ï¼");
         return;
     }
     else
     {
         if(finish_con[no].finish)
         {
-            cout << "×¢Òâ:´Ë²Ù×÷½«¸²¸Ç¾ÉÎÄ¼ş,ÇëÈ·ÈÏÊÇ·ñ¼ÌĞø£¿(y/n)" << endl;
+            QMessageBox::StandardButton result = QMessageBox::question(NULL, "æç¤º", "æ³¨æ„:æ­¤æ“ä½œå°†è¦†ç›–æ—§æ–‡ä»¶,è¯·ç¡®è®¤æ˜¯å¦ç»§ç»­ï¼Ÿ");
             char c = Input<char>();
-            if(c == 'y' || c == 'Y')
+            if(result == QMessageBox::Yes)
             {
                 string inroad = "..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no + 1) + "\\" +  OurStr::getFilename(road).substr(0, OurStr::getFilename(road).rfind('.'));
                 system(("del " + inroad).c_str());
+                QMessageBox::information(NULL, "é€šçŸ¥", "è¦†ç›–æˆåŠŸï¼");
             }
-            else
-            {
-                cout << "ÒÑÈ¡ÏûÉÏ´«" << endl;
-                return;
-            }
+            return;
         }
         if(OurStr::getSuffix(road) == "txt")
         {
@@ -255,21 +252,21 @@ void course::uploadHomework(string road, string stuName, int no)
             compression c;
             if(c.Code(road, outRoad))
             {
-                cout << "Ñ¹ËõÉÏ´«³É¹¦" << endl;
+                QMessageBox::information(NULL, "é€šçŸ¥", "å‹ç¼©ä¸Šä¼ æˆåŠŸï¼");
                 finish_con[no].finish = true;
                 finish_con[no].road = OurStr::getFilename(road);
                 finish_con[no].MD5 = md5str;
             }
             else
             {
-                cout << "Ñ¹ËõÉÏ´«Ê§°Ü" << endl;
+                QMessageBox::information(NULL, "Error", "å‹ç¼©ä¸Šä¼ å¤±è´¥ï¼è¯·è”ç³»å¼€å‘è€…");
             }
         }
         else
         {
-            cout << "¼ì²âµ½²»ÊÇtxtÎÄ¼ş,È¡ÏûÑ¹Ëõ" << endl;
             string cmd = "copy " + road + " ..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no);
             system(cmd.c_str());
+            QMessageBox::information(NULL, "é€šçŸ¥", "éå‹ç¼©ä¸Šä¼ æˆåŠŸï¼");
         }
     }
     
@@ -277,12 +274,12 @@ void course::uploadHomework(string road, string stuName, int no)
 
 void course::viewDocument(string stuName)
 {
-    cout << "ÇëÑ¡ÔñÒª²é¿´µÄÀàĞÍ:" << endl;
-    printf("1.¿Î³Ì×ÊÁÏ\t2.¿Î³Ì×÷Òµ\n");
+    cout << "è¯·é€‰æ‹©è¦æŸ¥çœ‹çš„ç±»å‹:" << endl;
+    printf("1.è¯¾ç¨‹èµ„æ–™\t2.è¯¾ç¨‹ä½œä¸š\n");
     int type = input::getOperatorNum();
     if(type == 1)
     {
-        cout << "ÇëÑ¡ÔñÒª²é¿´µÄ×ÊÁÏ:" << endl;
+        cout << "è¯·é€‰æ‹©è¦æŸ¥çœ‹çš„èµ„æ–™:" << endl;
         for(int i = 0; i < doc_size; i++)
         {
             cout << i + 1 << "." << documents[i] << endl;
@@ -293,19 +290,19 @@ void course::viewDocument(string stuName)
         compression c;
         if(c.Decode(inroad, outroad))
         {
-            cout << "½âÑ¹³É¹¦,ÕıÔÚ´ò¿ªÎÄ¼ş..." << endl;
+            cout << "è§£å‹æˆåŠŸ,æ­£åœ¨æ‰“å¼€æ–‡ä»¶..." << endl;
             system(("..\\documents\\public\\" + name + "\\" + documents[no]).c_str());
-            cout << "ä¯ÀÀ½áÊø,×Ô¶¯É¾³ı½âÑ¹ÎÄ¼ş" << endl;
+            cout << "æµè§ˆç»“æŸ,è‡ªåŠ¨åˆ é™¤è§£å‹æ–‡ä»¶" << endl;
             system(("del ..\\documents\\public\\" + name + "\\" + documents[no]).c_str());
         }
         else
         {
-            cout << "½âÑ¹Ê§°Ü" << endl;
+            cout << "è§£å‹å¤±è´¥" << endl;
         }
     }
     else if(type == 2)
     {
-        cout << "ÇëÑ¡ÔñÒª²é¿´µÄ×÷Òµ:" << endl;
+        cout << "è¯·é€‰æ‹©è¦æŸ¥çœ‹çš„ä½œä¸š:" << endl;
         for(int i = 0; i < hw_size; i++)
         {
             cout << i + 1 << "." << homeWork[i] << endl;
@@ -317,14 +314,14 @@ void course::viewDocument(string stuName)
         compression c;
         if(c.Decode(inroad, outroad))
         {
-            cout << "½âÑ¹³É¹¦,ÕıÔÚ´ò¿ªÎÄ¼ş..." << endl;
+            cout << "è§£å‹æˆåŠŸ,æ­£åœ¨æ‰“å¼€æ–‡ä»¶..." << endl;
             system(("..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no + 1) + '\\' + finish_con[no].road).c_str());
-            cout << "ä¯ÀÀ½áÊø,×Ô¶¯É¾³ı½âÑ¹ÎÄ¼ş" << endl;
+            cout << "æµè§ˆç»“æŸ,è‡ªåŠ¨åˆ é™¤è§£å‹æ–‡ä»¶" << endl;
             system(("del ..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no + 1) + '\\' + finish_con[no].road).c_str());
         }
         else
         {
-            cout << "½âÑ¹Ê§°Ü" << endl;
+            cout << "è§£å‹å¤±è´¥" << endl;
         }
     }
 }
