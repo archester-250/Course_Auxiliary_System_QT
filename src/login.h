@@ -124,7 +124,7 @@ public:
     {
         try
         {
-            if(match(user, password, loginCode) && loginCode == 3) throw 2;
+            if(match(user, password, loginCode)) throw 2;
             FILE * fp;
             if(loginCode == 3) fp = fopen("../database/users.data", "a");
             else fp = fopen("../database/administers.data", "a");

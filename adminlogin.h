@@ -1,4 +1,4 @@
-#ifndef ADMINLOGIN_H
+﻿#ifndef ADMINLOGIN_H
 #define ADMINLOGIN_H
 
 #include <QDialog>
@@ -16,6 +16,9 @@ class AdminLogin : public QDialog
 public:
     explicit AdminLogin(QWidget *parent = nullptr);
     ~AdminLogin();
+
+signals:
+    void sendName(QString name);
 
 private slots:
     void on_buttonBox_accepted();

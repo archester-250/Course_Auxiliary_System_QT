@@ -79,6 +79,16 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>50</y>
+     <width>401</width>
+     <height>201</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>

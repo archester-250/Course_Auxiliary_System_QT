@@ -73,10 +73,20 @@
     </font>
    </property>
    <property name="text">
-    <string>现有课程一览</string>
+    <string>现有学生一览</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>51</y>
+     <width>401</width>
+     <height>201</height>
+    </rect>
    </property>
   </widget>
  </widget>

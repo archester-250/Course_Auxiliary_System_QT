@@ -35,6 +35,8 @@ void AdminLogin::on_buttonBox_accepted()
     {
         QMessageBox::information(NULL, "Success", "登录成功!");
         AdminMenu am;
+        connect(this, SIGNAL(sendName(QString)), &am, SLOT(receiveName(QString)));
+        emit sendName(name);
         am.exec();
     }
 }

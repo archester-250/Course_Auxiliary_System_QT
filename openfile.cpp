@@ -76,26 +76,59 @@ void OpenFile::on_pushButton_2_clicked()
     int index = ui->comboBox->currentIndex();
     if(ui->radioButton->isChecked())
     {
-        string inroad = "..\\documents\\public\\" + c.getName() + "\\" + c.getDocuments()[index].substr(0, c.getDocuments()[index].rfind('.'));
-        string outroad = "..\\documents\\public\\" + c.getName()  + "\\" + c.getDocuments()[index];
+        if(OurStr::getSuffix(c.getDocuments()[index]) != "txt")
+        {
+            if(QMessageBox::information(NULL, "提醒", "非压缩模式，点击确定打开文件！") == QMessageBox::Ok)
+            {
+                system(("..\\documents\\public\\" + c.getName()  + "\\" + c.getDocuments()[index]).c_str());
+            }
+        }
+        else
+        {
+            string inroad = "..\\documents\\public\\" + c.getName() + "\\" + c.getDocuments()[index].substr(0, c.getDocuments()[index].rfind('.'));
+            string outroad = "..\\documents\\public\\" + c.getName()  + "\\" + c.getDocuments()[index];
+            compression co;
+            if(co.Decode(inroad, outroad))
+            {
+                if(QMessageBox::information(NULL, "提醒", "解压成功，点击确定打开文件！") == QMessageBox::Ok)
+                {
+                    system(("..\\documents\\public\\" + c.getName()  + "\\" + c.getDocuments()[index]).c_str());
+                    QMessageBox::information(NULL, "提醒", "浏览结束,自动删除解压文件");
+                    system(("del ..\\documents\\public\\" + c.getName()  + "\\" + c.getDocuments()[index]).c_str());
+                }
+            }
+            else
+            {
+                QMessageBox::information(NULL, "Error", "解压失败！请联系开发者");
+            }
+        }
+
+    }
+    else
+    {
+        if(OurStr::getSuffix(c.getDocuments()[index]) != "txt")
+        {
+            if(QMessageBox::information(NULL, "提醒", "非压缩模式，点击确定打开文件！") == QMessageBox::Ok)
+            {
+                system(("..\\documents\\users\\" + name.toStdString() + "\\" + c.getName() + "\\" + to_string(index + 1) + '\\' + c.getFinish()[index].road).c_str());
+            }
+        }
+        string inroad = "..\\documents\\users\\" + name.toStdString() + "\\" + c.getName() + "\\" + to_string(index + 1) + '\\' + c.getFinish()[index].road.substr(0, c.getFinish()[index].road.rfind('.'));
+        string outroad = "..\\documents\\users\\" + name.toStdString() + "\\" + c.getName() + "\\" + to_string(index + 1) + '\\' + c.getFinish()[index].road;
         compression co;
         if(co.Decode(inroad, outroad))
         {
             if(QMessageBox::information(NULL, "提醒", "解压成功，点击确定打开文件！") == QMessageBox::Ok)
             {
-                system(("..\\documents\\public\\" + c.getName()  + "\\" + c.getDocuments()[index]).c_str());
+                system(("..\\documents\\users\\" + name.toStdString() + "\\" + c.getName() + "\\" + to_string(index + 1) + '\\' + c.getFinish()[index].road).c_str());
                 QMessageBox::information(NULL, "提醒", "浏览结束,自动删除解压文件");
-                system(("del ..\\documents\\public\\" + c.getName()  + "\\" + c.getDocuments()[index]).c_str());
+                system(("del ..\\documents\\users\\" + name.toStdString() + "\\" + c.getName() + "\\" + to_string(index + 1) + '\\' + c.getFinish()[index].road).c_str());
             }
         }
         else
         {
             QMessageBox::information(NULL, "Error", "解压失败！请联系开发者");
         }
-    }
-    else
-    {
-
     }
 }
 

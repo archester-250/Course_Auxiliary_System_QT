@@ -1,5 +1,6 @@
 ﻿#include "adminregister.h"
 #include "ui_adminregister.h"
+#include "src/login.h"
 
 AdminRegister::AdminRegister(QWidget *parent) :
     QDialog(parent),
@@ -30,10 +31,16 @@ void AdminRegister::on_buttonBox_accepted()
             QMessageBox::information(NULL, "Error", "输入密码为空!");
             flag = false;
         }
+        else if(login::match(name.toStdString(), password.toStdString(), 3))
+        {
+            QMessageBox::information(NULL, "Error", "账户已经注册！");
+            flag = false;
+        }
     }
     if(flag)
     {
         QMessageBox::information(NULL, "Success", "注册成功!");
+        login::writeIn(name.toStdString(), password.toStdString(), 4);
     }
 }
 

@@ -1,4 +1,4 @@
-#include "admin.h"
+ï»¿#include "admin.h"
 // #define DEBUG
 
 Admin * admin;
@@ -45,7 +45,7 @@ Admin::Admin(string name)
     {
         string stuname;
         in >> stuname;
-        clog << "»ñÈ¡Ñ§Éú" << stuname << "¿Î³Ì\n";
+        clog << "è·å–å­¦ç”Ÿ" << stuname << "è¯¾ç¨‹\n";
         Student s(stuname);
         students[i].setName(stuname);
         students[i].setCourseSize(s.getCourseSize());
@@ -82,67 +82,31 @@ void Admin::setCourses(course * courses)
     }
 }
 
-void Admin::addCourse()
+void Admin::addCourse(string courseName, int timeSize, course_time * ct, string address, string current, string QQGroup, Time extime, string exaddress)
 {
-    
+
     //done
     course * newArray = new course[getCourse_size() + 1];
     for (int i = 0; i < getCourse_size() - 1; i++)
     {
         newArray[i] = courses[i];
     }
-    cout << "ÇëÊäÈë¿Î³ÌÃû³Æ£º";
-    string courseName = Input<string>();
     newArray[getCourse_size() - 1].setName(courseName);
-    cout << "ÇëÊäÈëÃ¿ÖÜ¿Î³Ì´ÎÊı£º";
-    newArray[getCourse_size() - 1].setTimeSize(Input<int>());
-    course_time * newTime = new course_time[newArray[getCourse_size() - 1].getTimeSize()];
-    for (int i = 0; i < newArray[getCourse_size() - 1].getTimeSize(); i++)
-    {
-        cout << "ÇëÊäÈëµÚ" << i + 1 << "´Î¿Î³ÌÔÚÖÜ¼¸ÉÏ¿Î£º(ÊäÈë1-7)";
-        newTime[i].week = Input<int>() - 1;
-        cout << "ÇëÊäÈëµÚ" << i + 1 << "´Î¿Î³ÌµÄ¿ªÊ¼Ê±¼ä£º";
-        newTime[i].starthour = Input<int>();
-        cout << "ÇëÊäÈëµÚ" << i + 1 << "´Î¿Î³ÌµÄ½áÊøÊ±¼ä£º";
-        newTime[i].endhour = Input<int>();
-        for(int j = 0; j < course_size; j++)
-        {
-            for(int k = 0; k < courses[j].getTimeSize(); k++)
-            {
-                if(newTime[i].week == courses[j].getTime()[k].week && 
-                (newTime[i].starthour >= courses[j].getTime()[k].starthour && newTime[i].starthour < courses[j].getTime()[k].endhour) ||
-                (newTime[i].endhour > courses[j].getTime()[k].starthour && newTime[i].endhour <= courses[j].getTime()[k].endhour))
-                {
-                    cout << "¿Î³ÌÊ±¼ä³åÍ»£¬ÇëÖØĞÂÊäÈë\n";
-                    i--;
-                    return;
-                }
-            }
-        }
-    }
-    newArray[getCourse_size() - 1].setTime(newTime, newArray[getCourse_size() - 1].getTimeSize());
-    cout << "ÇëÊäÈë¿Î³ÌµØµã£º";
-    newArray[getCourse_size() - 1].setAddress(Input<string>());
-    cout << "ÇëÊäÈëµ±Ç°¿Î³Ì½ø¶È£º";
-    newArray[getCourse_size() - 1].setCurrent(Input<string>());
+    newArray[getCourse_size() - 1].setTimeSize(timeSize);
+    newArray[getCourse_size() - 1].setTime(ct, newArray[getCourse_size() - 1].getTimeSize());
+    newArray[getCourse_size() - 1].setAddress(address);
+    newArray[getCourse_size() - 1].setCurrent(current);
     string * newDocuments = NULL;
     newArray[getCourse_size() - 1].setDocuments(newDocuments, 0);
-    cout << "ÇëÊäÈë¿Î³ÌQQÈº:";
-    newArray[getCourse_size() - 1].setQQGroup(Input<string>());
-    Time t;
-    t.yr = 0; t.mn = 0; t.day = 0; t.hr = 0;
-    cout << "ÇëÊäÈë¿¼ÊÔÊ±¼ä(¸ñÊ½Èç:21010820)" << endl;
-    int exam_time = Input<int>();
-    t.inputTime(exam_time);
-    newArray[getCourse_size() - 1].setExtime(t);
-    cout << "ÇëÊäÈë¿¼ÊÔµØµã£º";
-    newArray[getCourse_size() - 1].setExaddress(Input<string>());
+    newArray[getCourse_size() - 1].setQQGroup(QQGroup);
+    newArray[getCourse_size() - 1].setExtime(extime);
+    newArray[getCourse_size() - 1].setExaddress(exaddress);
     newArray[getCourse_size() - 1].setHomeWork(newDocuments, 0);
     string stuname;
-    //ÊäÈëÑ§ÉúÃû×Ö
+    //è¾“å…¥å­¦ç”Ÿåå­—
     do
     {
-        cout << "ÇëÊäÈëÉÏ¿ÎÑ§ÉúÃû×Ö,ÊäÈë0½áÊø:";
+        cout << "è¯·è¾“å…¥ä¸Šè¯¾å­¦ç”Ÿåå­—,è¾“å…¥0ç»“æŸ:";
         stuname = Input<string>();
         fstream in("../database/users.data");
         string name, temp;
@@ -178,13 +142,12 @@ void Admin::addCourse()
         }
         else
         {
-            cout << "Ã»ÓĞÕÒµ½¸ÃÑ§Éú!" << endl;
+            cout << "æ²¡æœ‰æ‰¾åˆ°è¯¥å­¦ç”Ÿ!" << endl;
         }
     }while(stuname != "" && stuname != "0");
-    cout << "Ìí¼Ó³É¹¦£¡" << endl;
+    cout << "æ·»åŠ æˆåŠŸï¼" << endl;
     string cmd = "mkdir ..\\documents\\public\\" + courseName;
     system(cmd.c_str());
-    delete[] newTime;
     delete[] newDocuments;
     setCourse_size(getCourse_size() + 1);
     setCourses(newArray);
@@ -192,29 +155,29 @@ void Admin::addCourse()
 }
 
 /**
- * @brief ÉÏ´«¿Î³Ì×ÊÁÏ
- * 
- * @param road ÉÏ´«Â·¾¶
+ * @brief ä¸Šä¼ è¯¾ç¨‹èµ„æ–™
+ *
+ * @param road ä¸Šä¼ è·¯å¾„
  */
 string Admin::uploadDocument()
 {
     string road, course_name;
-    cout << "ÇëÊäÈëÒªÉÏ´«µÄ×ÊÁÏÂ·¾¶(²ã¼¶Ä¿Â¼¼äÒÔ¡°\\¡±·Ö¸ô)£º";
+    cout << "è¯·è¾“å…¥è¦ä¸Šä¼ çš„èµ„æ–™è·¯å¾„(å±‚çº§ç›®å½•é—´ä»¥â€œ\\â€åˆ†éš”)ï¼š";
     road = Input<string>();
-    cout << "ÇëÊäÈë¿Î³ÌÃû³Æ£º";
+    cout << "è¯·è¾“å…¥è¯¾ç¨‹åç§°ï¼š";
     course_name = Input<string>();
     Student s;
     course c = s.searchCourse(courses, course_size, course_name);
     if(c.getName() == "null")
     {
-        cout << "Ã»ÓĞÕÒµ½¸Ã¿Î³Ì£¡" << endl;
+        cout << "æ²¡æœ‰æ‰¾åˆ°è¯¥è¯¾ç¨‹ï¼" << endl;
         return "null";
     }
     for(int i = 0; i < c.getDocumentsSize(); i++)
     {
         if(!OurStr::StrCmp(c.getDocuments()[i], OurStr::getFilename(road)))
         {
-            cout << "¸Ã×ÊÁÏÒÑ´æÔÚ£¡" << endl;
+            cout << "è¯¥èµ„æ–™å·²å­˜åœ¨ï¼" << endl;
             return "null";
         }
     }
@@ -222,19 +185,19 @@ string Admin::uploadDocument()
     {
         string outRoad = "..\\documents\\public\\" + course_name + "\\" + OurStr::getFilename(road).substr(0, OurStr::getFilename(road).length() - 4);
         compression com;
-        cout << "ÕıÔÚÑ¹ËõÎÄ¼ş..." << endl;
+        cout << "æ­£åœ¨å‹ç¼©æ–‡ä»¶..." << endl;
         if(com.Code(road, outRoad))
         {
-            cout << "Ñ¹ËõÉÏ´«³É¹¦" << endl;
+            cout << "å‹ç¼©ä¸Šä¼ æˆåŠŸ" << endl;
         }
         else
         {
-            cout << "Ñ¹ËõÉÏ´«Ê§°Ü" << endl;
+            cout << "å‹ç¼©ä¸Šä¼ å¤±è´¥" << endl;
         }
     }
     else
     {
-        cout << "¼ì²âµ½²»ÊÇtxtÎÄ¼ş,È¡ÏûÑ¹Ëõ" << endl;
+        cout << "æ£€æµ‹åˆ°ä¸æ˜¯txtæ–‡ä»¶,å–æ¶ˆå‹ç¼©" << endl;
         string cmd = "copy " + road + " ..\\documents\\public\\" + course_name;
         system(cmd.c_str());
     }
@@ -255,34 +218,8 @@ string Admin::uploadDocument()
     return OurStr::getFilename(road);
 }
 
-void Admin::addHomework()
+void Admin::addHomework(string Course_name, string Homework)
 {
-    string Course_name,Homework;
-    cout << "ÇëÊäÈë¿Î³ÌÃû³Æ£º";
-    Course_name = Input<string>();
-    Student s;
-    course c = s.searchCourse(courses, course_size, Course_name);
-    if(c.getName() == "null")
-    {
-        cout << "Ã»ÓĞÕÒµ½¸Ã¿Î³Ì!" << endl;
-        return;
-    }
-    cout << "ÇëÊäÈë×÷ÒµÃû³Æ£º";
-    Homework = Input<string>();
-    bool flag = false;
-    for(int j = 0; j < c.getHomeWorkSize(); j++)
-    {
-        if(!OurStr::StrCmp(Homework, c.getHomeWork()[j]))
-        {
-            flag = true;
-            break;
-        }
-    }
-    if(flag)
-    {
-        cout << "¸Ã×÷ÒµÒÑ´æÔÚ!" << endl;
-        return;
-    }
     for(int i = 0; i < course_size; i++)
     {
         if(!OurStr::StrCmp(courses[i].getName(), Course_name))
@@ -352,28 +289,27 @@ void Admin::addHomework()
             }
         }
     }
-    cout << "Ìí¼Ó³É¹¦£¡" << endl;
 }
 
 void Admin::showMenu()
 {
     updateTime();
-    printf("»¶Ó­¹ÜÀíÔ±%s\n", name.c_str());
-    printf("1.²é¿´ÏÖÓĞ¿Î³Ì\n");
-    printf("2.²é¿´ÏÖÓĞÑ§Éú\n");
-    printf("3.Ìí¼Ó¿Î³Ì\n");
-    printf("4.Ìí¼Ó×÷Òµ\n");
-    printf("5.²é¿´¿Î³Ì×ÊÁÏ\n");
-    printf("6.ÉÏ´«¿Î³Ì×ÊÁÏ\n");
-    printf("0.ÍË³ö¹ÜÀíÔ±ÏµÍ³\n");
-    printf("ÇëÊäÈëÄúµÄÑ¡Ôñ£º");
+    printf("æ¬¢è¿ç®¡ç†å‘˜%s\n", name.c_str());
+    printf("1.æŸ¥çœ‹ç°æœ‰è¯¾ç¨‹\n");
+    printf("2.æŸ¥çœ‹ç°æœ‰å­¦ç”Ÿ\n");
+    printf("3.æ·»åŠ è¯¾ç¨‹\n");
+    printf("4.æ·»åŠ ä½œä¸š\n");
+    printf("5.æŸ¥çœ‹è¯¾ç¨‹èµ„æ–™\n");
+    printf("6.ä¸Šä¼ è¯¾ç¨‹èµ„æ–™\n");
+    printf("0.é€€å‡ºç®¡ç†å‘˜ç³»ç»Ÿ\n");
+    printf("è¯·è¾“å…¥æ‚¨çš„é€‰æ‹©ï¼š");
     int choice = input::getOperatorNum();
     while(choice)
     {
         switch(choice)
         {
             case 1:
-                cout << "ÏÖÓĞ¿Î³Ì£º" << endl;
+                cout << "ç°æœ‰è¯¾ç¨‹ï¼š" << endl;
                 for(int i = 0; i < course_size; i++)
                 {
                     printf("%s\t", courses[i].getName().c_str());
@@ -381,7 +317,7 @@ void Admin::showMenu()
                 cout << endl;
                 break;
             case 2:
-                cout << "ÏÖÓĞÑ§Éú£º" << endl;
+                cout << "ç°æœ‰å­¦ç”Ÿï¼š" << endl;
                 for(int i = 0; i < student_size; i++)
                 {
                     printf("%s\t", students[i].getName().c_str());
@@ -389,10 +325,10 @@ void Admin::showMenu()
                 cout << endl;
                 break;
             case 3:
-                addCourse();
+//                addCourse();
                 break;
             case 4:
-                addHomework();
+//                addHomework();
                 break;
             case 5:
                 showDocument();
@@ -403,18 +339,18 @@ void Admin::showMenu()
             case 0:
                 return;
             default:
-                printf("ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë£¡\n");
+                printf("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥ï¼\n");
                 break;
         }
-        printf("»¶Ó­¹ÜÀíÔ±%s\n", name.c_str());
-        printf("1.²é¿´ÏÖÓĞ¿Î³Ì\n");
-        printf("2.²é¿´ÏÖÓĞÑ§Éú\n");
-        printf("3.Ìí¼Ó¿Î³Ì\n");
-        printf("4.Ìí¼Ó×÷Òµ\n");
-        printf("5.²é¿´¿Î³Ì×ÊÁÏ\n");
-        printf("6.ÉÏ´«¿Î³Ì×ÊÁÏ\n");
-        printf("0.ÍË³ö¹ÜÀíÔ±ÏµÍ³\n");
-        printf("ÇëÊäÈëÄúµÄÑ¡Ôñ£º");
+        printf("æ¬¢è¿ç®¡ç†å‘˜%s\n", name.c_str());
+        printf("1.æŸ¥çœ‹ç°æœ‰è¯¾ç¨‹\n");
+        printf("2.æŸ¥çœ‹ç°æœ‰å­¦ç”Ÿ\n");
+        printf("3.æ·»åŠ è¯¾ç¨‹\n");
+        printf("4.æ·»åŠ ä½œä¸š\n");
+        printf("5.æŸ¥çœ‹è¯¾ç¨‹èµ„æ–™\n");
+        printf("6.ä¸Šä¼ è¯¾ç¨‹èµ„æ–™\n");
+        printf("0.é€€å‡ºç®¡ç†å‘˜ç³»ç»Ÿ\n");
+        printf("è¯·è¾“å…¥æ‚¨çš„é€‰æ‹©ï¼š");
         choice = input::getOperatorNum();
     }
 }
@@ -422,16 +358,16 @@ void Admin::showMenu()
 void Admin::showDocument()
 {
     string Course_name;
-    cout << "ÇëÊäÈë¿Î³ÌÃû³Æ£º";
+    cout << "è¯·è¾“å…¥è¯¾ç¨‹åç§°ï¼š";
     Course_name = Input<string>();
     Student s;
     course c = s.searchCourse(courses, course_size, Course_name);
     if(c.getName() == "null")
     {
-        cout << "Ã»ÓĞÕÒµ½¸Ã¿Î³Ì!" << endl;
+        cout << "æ²¡æœ‰æ‰¾åˆ°è¯¥è¯¾ç¨‹!" << endl;
         return;
     }
-    cout << "¿Î³Ì×ÊÁÏÈçÏÂ£º" << endl;
+    cout << "è¯¾ç¨‹èµ„æ–™å¦‚ä¸‹ï¼š" << endl;
     for(int i = 0; i < c.getDocumentsSize(); i++)
     {
         printf("%s\t", c.getDocuments()[i].c_str());
@@ -445,7 +381,7 @@ void Admin::saveAdminInfo()
     {
         students[i].saveStuInfo();
     }
-    cout << "¹ÜÀíÔ±ĞÅÏ¢±£´æÍê³É£¡" << endl;
+    cout << "ç®¡ç†å‘˜ä¿¡æ¯ä¿å­˜å®Œæˆï¼" << endl;
 }
 
 void Admin::saveCourseInfo()
@@ -480,3 +416,6 @@ void Admin::saveCourseInfo()
     }
     out.close();
 }
+
+Student * Admin::getStudents(){return students;}
+int Admin::getStudent_size(){return student_size;}

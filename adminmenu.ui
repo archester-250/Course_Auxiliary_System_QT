@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>425</width>
     <height>300</height>
    </rect>
   </property>
@@ -16,9 +16,9 @@
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>-1</x>
+     <x>0</x>
      <y>80</y>
-     <width>401</width>
+     <width>421</width>
      <height>121</height>
     </rect>
    </property>
@@ -44,42 +44,8 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="4">
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="text">
-       <string>添加课程资料</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1">
      <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>添加作业</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="text">
-       <string>查看课程资料</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <spacer name="horizontalSpacer_2">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -104,8 +70,48 @@
       </property>
      </spacer>
     </item>
-    <item row="1" column="3">
+    <item row="1" column="2">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>添加作业</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
      <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="text">
+       <string>添加课程资料</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="4">
+     <spacer name="horizontalSpacer_7">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -145,7 +151,7 @@
     <rect>
      <x>0</x>
      <y>250</y>
-     <width>401</width>
+     <width>421</width>
      <height>51</height>
     </rect>
    </property>

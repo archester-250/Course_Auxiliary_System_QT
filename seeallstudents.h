@@ -1,4 +1,4 @@
-#ifndef SEEALLSTUDENTS_H
+﻿#ifndef SEEALLSTUDENTS_H
 #define SEEALLSTUDENTS_H
 
 #include <QDialog>
@@ -15,8 +15,12 @@ public:
     explicit SeeAllStudents(QWidget *parent = nullptr);
     ~SeeAllStudents();
 
+private slots:
+    void receiveName(QString name);
+
 private:
     Ui::SeeAllStudents *ui;
+    QString name;
 };
 
 #endif // SEEALLSTUDENTS_H

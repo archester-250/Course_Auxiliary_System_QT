@@ -1,4 +1,4 @@
-#ifndef SEEALLCOURSES_H
+﻿#ifndef SEEALLCOURSES_H
 #define SEEALLCOURSES_H
 
 #include <QDialog>
@@ -15,8 +15,12 @@ public:
     explicit SeeAllCourses(QWidget *parent = nullptr);
     ~SeeAllCourses();
 
+private slots:
+    void receiveName(QString name);
+
 private:
     Ui::SeeAllCourses *ui;
+    QString name;
 };
 
 #endif // SEEALLCOURSES_H
