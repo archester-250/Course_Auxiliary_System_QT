@@ -210,6 +210,13 @@ void course::setFinishSize(int size){this->finish_size = size;}
  */
 void course::uploadHomework(string road, string stuName, int no)
 {
+    for(int i = 0; i < road.length(); i++)
+    {
+        if(road[i] == '/')
+        {
+            road[i] = '\\';
+        }
+    }
     string input;
     unsigned char decrypt[16];
     ifstream in(road);
@@ -237,7 +244,6 @@ void course::uploadHomework(string road, string stuName, int no)
         if(finish_con[no].finish)
         {
             QMessageBox::StandardButton result = QMessageBox::question(NULL, "提示", "注意:此操作将覆盖旧文件,请确认是否继续？");
-            char c = Input<char>();
             if(result == QMessageBox::Yes)
             {
                 string inroad = "..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no + 1) + "\\" +  OurStr::getFilename(road).substr(0, OurStr::getFilename(road).rfind('.'));
@@ -264,8 +270,11 @@ void course::uploadHomework(string road, string stuName, int no)
         }
         else
         {
-            string cmd = "copy " + road + " ..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no);
+            string cmd = "copy " + road + " ..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no + 1) + "\\" +  OurStr::getFilename(road);
             system(cmd.c_str());
+            finish_con[no].finish = true;
+            finish_con[no].road = OurStr::getFilename(road);
+            finish_con[no].MD5 = md5str;
             QMessageBox::information(NULL, "通知", "非压缩上传成功！");
         }
     }

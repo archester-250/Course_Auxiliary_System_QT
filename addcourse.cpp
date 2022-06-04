@@ -7,11 +7,8 @@ AddCourse::AddCourse(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->pushButton_3->hide();
-    ui->pushButton_3->setEnabled(false);
     ui->pushButton_4->hide();
-    ui->pushButton_4->setEnabled(false);
     ui->pushButton_5->hide();
-    ui->pushButton_5->setEnabled(false);
     ui->formLayoutWidget_2->hide();
     ui->formLayoutWidget_3->hide();
 }
@@ -51,6 +48,7 @@ void AddCourse::on_pushButton_2_clicked()
     ui->formLayoutWidget_2->show();
     ui->pushButton_2->hide();
     ui->pushButton_3->show();
+    i = 0;
     ui->label_9->setText(QString::fromStdString("请输入第" + to_string(i + 1) + "次课程开始时间："));
     ui->label_10->setText(QString::fromStdString("请输入第" + to_string(i + 1) + "次课程结束时间："));
     ui->label_11->setText(QString::fromStdString("请输入第" + to_string(i + 1) + "次课程在周几上课(0-6)："));
@@ -70,8 +68,8 @@ void AddCourse::on_pushButton_3_clicked()
             for(int k = 0; k < a.getCourses()[j].getTimeSize(); k++)
             {
                 if(ct[i].week == a.getCourses()[j].getTime()[k].week &&
-                (ct[i].starthour >= a.getCourses()[j].getTime()[k].starthour && ct[i].starthour < a.getCourses()[j].getTime()[k].endhour) ||
-                (ct[i].endhour > a.getCourses()[j].getTime()[k].starthour && ct[i].endhour <= a.getCourses()[j].getTime()[k].endhour))
+                ((ct[i].starthour >= a.getCourses()[j].getTime()[k].starthour && ct[i].starthour < a.getCourses()[j].getTime()[k].endhour) ||
+                (ct[i].endhour > a.getCourses()[j].getTime()[k].starthour && ct[i].endhour <= a.getCourses()[j].getTime()[k].endhour)))
                 {
                     QMessageBox::information(NULL, "Error", "课程冲突，请重新输入");
                     return;

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimerEvent>
 #include "studentlogin.h"
 #include "adminlogin.h"
 #include "studentregister.h"
@@ -17,6 +18,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void  handleTimeout();  //超时处理函数
+    virtual void timerEvent( QTimerEvent *event);
 
 private slots:
     void on_pushButton_4_clicked();
@@ -27,5 +30,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    int m_nTimerID;
 };
 #endif // MAINWINDOW_H

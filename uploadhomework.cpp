@@ -21,7 +21,8 @@ void UploadHomework::on_pushButton_2_clicked()
 {
     filename = QFileDialog::getOpenFileName(NULL, QStringLiteral("上传作业文件"));
     QString text = QString::fromStdString("当前文件为:") + filename;
-    ui->label_3->setText(text);    
+    ui->label_3->setText(text);
+    ui->label_3->adjustSize();
 }
 
 void UploadHomework::receiveName(QString name)
@@ -50,7 +51,7 @@ void UploadHomework::on_lineEdit_editingFinished()
 void UploadHomework::on_pushButton_3_clicked()
 {
     int no = ui->spinBox->value();
-    c.uploadHomework(filename.toStdString(), stuName, no);
+    c.uploadHomework(filename.toStdString(), stuName, no - 1);
     Student s(stuName);
     for(int i = 0; i < s.getCourseSize(); i++)
     {

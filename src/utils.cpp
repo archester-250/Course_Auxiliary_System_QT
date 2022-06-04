@@ -39,11 +39,11 @@ void Time::incre(int h) {
             if (clockCheck->first) {
                 for (int i = 0; i < clockCheck->second.info->size; i++)
                     cout << "[事件提醒]" << clockCheck->second.info->get(i) << endl;
-            }
         }
     }
     sys_time_bias_times = SYS_TIME_BIAS_TIMES;
-    cout << "[当前时间]" << toString() << "星期" << calculateWeekDay() << endl;
+//    cout << "[当前时间]" << toString() << "星期" << calculateWeekDay() << endl;
+    }
 }
 
 Clock::Clock() {}

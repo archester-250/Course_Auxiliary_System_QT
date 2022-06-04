@@ -18,6 +18,13 @@ AddCourseDoc::~AddCourseDoc()
 void AddCourseDoc::on_pushButton_3_clicked()
 {
     filename = QFileDialog::getOpenFileName(NULL, QStringLiteral("上传课程资料"));
+    for(int i = 0; i < filename.length(); i++)
+    {
+        if(filename[i] == '/')
+        {
+            filename[i] = '\\';
+        }
+    }
     ui->label_3->setText("当前文件:" + filename);
 }
 

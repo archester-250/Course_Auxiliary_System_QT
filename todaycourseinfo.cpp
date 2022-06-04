@@ -18,7 +18,6 @@ TodayCourseInfo::~TodayCourseInfo()
 void TodayCourseInfo::receiveName(QString name)
 {
     this->name = name;
-    updateTime();
     string week[7] = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
     QString text = QString::fromStdString("今天是" + modtime.toString() + "," + week[modtime.calculateWeekDay()] + "\n");
     ui->textBrowser->insertPlainText(text);

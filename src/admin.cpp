@@ -87,21 +87,21 @@ void Admin::addCourse(string courseName, int timeSize, course_time * ct, string 
 
     //done
     course * newArray = new course[getCourse_size() + 1];
-    for (int i = 0; i < getCourse_size() - 1; i++)
+    for (int i = 0; i < getCourse_size(); i++)
     {
         newArray[i] = courses[i];
     }
-    newArray[getCourse_size() - 1].setName(courseName);
-    newArray[getCourse_size() - 1].setTimeSize(timeSize);
-    newArray[getCourse_size() - 1].setTime(ct, newArray[getCourse_size() - 1].getTimeSize());
-    newArray[getCourse_size() - 1].setAddress(address);
-    newArray[getCourse_size() - 1].setCurrent(current);
+    newArray[getCourse_size()].setName(courseName);
+    newArray[getCourse_size()].setTimeSize(timeSize);
+    newArray[getCourse_size()].setTime(ct, newArray[getCourse_size()].getTimeSize());
+    newArray[getCourse_size()].setAddress(address);
+    newArray[getCourse_size()].setCurrent(current);
     string * newDocuments = NULL;
-    newArray[getCourse_size() - 1].setDocuments(newDocuments, 0);
-    newArray[getCourse_size() - 1].setQQGroup(QQGroup);
-    newArray[getCourse_size() - 1].setExtime(extime);
-    newArray[getCourse_size() - 1].setExaddress(exaddress);
-    newArray[getCourse_size() - 1].setHomeWork(newDocuments, 0);
+    newArray[getCourse_size()].setDocuments(newDocuments, 0);
+    newArray[getCourse_size()].setQQGroup(QQGroup);
+    newArray[getCourse_size()].setExtime(extime);
+    newArray[getCourse_size()].setExaddress(exaddress);
+    newArray[getCourse_size()].setHomeWork(newDocuments, 0);
     string stuname;
     //输入学生名字
     do
