@@ -3,6 +3,8 @@
 //
 #include "utils.h"
 #include "login.h"
+#include <QMessageBox>
+
 
 int tmptime = clock();
 
@@ -37,8 +39,10 @@ void Time::incre(int h) {
         if (student != nullptr) {
             auto clockCheck = student->getClocks()->get(modtime.timeStamp());
             if (clockCheck->first) {
-                for (int i = 0; i < clockCheck->second.info->size; i++)
+                for (int i = 0; i < clockCheck->second.info->size; i++){
                     cout << "[事件提醒]" << clockCheck->second.info->get(i) << endl;
+                    QMessageBox::information(NULL, "闹钟", QString::fromStdString(clockCheck->second.info->get(i)));
+                    }
         }
     }
     sys_time_bias_times = SYS_TIME_BIAS_TIMES * rate;

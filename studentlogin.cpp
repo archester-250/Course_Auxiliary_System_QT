@@ -1,6 +1,6 @@
 ﻿#include "studentlogin.h"
 #include "ui_studentlogin.h"
-
+#include "login.h"
 StudentLogin::StudentLogin(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentLogin)
@@ -43,6 +43,8 @@ void StudentLogin::on_buttonBox_accepted()
         QMessageBox::information(NULL, "Success", "登录成功!");
         qDebug() << "[LOG] login student " << name << " success";
         SystemChoose sc;
+        student = new Student(name.toStdString());
+        student->InitStudent();
         connect(this, SIGNAL(sendName(QString)), &sc, SLOT(receiveName(QString)));
         emit sendName(name);
         sc.exec();

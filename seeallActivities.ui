@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SeeAllCourses</class>
- <widget class="QDialog" name="SeeAllCourses">
+ <class>SeeAllActivities</class>
+ <widget class="QDialog" name="SeeAllActivities">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -79,13 +79,23 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>50</y>
+     <width>401</width>
+     <height>201</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>SeeAllCourses</receiver>
+   <receiver>SeeAllActivities</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">

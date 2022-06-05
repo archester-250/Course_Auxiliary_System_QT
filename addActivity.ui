@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AddCourse</class>
- <widget class="QDialog" name="AddCourse">
+ <class>AddActivity</class>
+ <widget class="QDialog" name="AddActivity">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -35,6 +35,13 @@
        </size>
       </property>
      </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>确认</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton">
@@ -73,7 +80,7 @@
     </font>
    </property>
    <property name="text">
-    <string>添加（周期）闹钟</string>
+    <string>添加</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -82,22 +89,22 @@
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>80</y>
-     <width>301</width>
-     <height>131</height>
+     <x>70</x>
+     <y>48</y>
+     <width>281</width>
+     <height>206</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
     <item row="0" column="0">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="testsdf">
       <property name="text">
        <string>开始时间</string>
       </property>
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="startTime">
       <property name="toolTip">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如22040715&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
@@ -110,38 +117,72 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="testsss">
       <property name="text">
-       <string>时间间隔小时数</string>
+       <string>结束时间</string>
       </property>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="endTime">
       <property name="text">
-       <string>（提示：一周168小时）</string>
+       <string>如22040716</string>
       </property>
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="test22">
       <property name="text">
-       <string>一共需要提醒多少次</string>
+       <string>地点</string>
       </property>
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="lineEdit_3"/>
+     <widget class="QLineEdit" name="address"/>
     </item>
     <item row="3" column="0">
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="testss">
       <property name="text">
-       <string>提醒内容</string>
+       <string>除自己外活动成员数</string>
       </property>
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QLineEdit" name="lineEdit_4"/>
+     <widget class="QLineEdit" name="memberCnt"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="test2">
+      <property name="text">
+       <string>除自己外成员</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="member"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="tests">
+      <property name="text">
+       <string>活动描述</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="description"/>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="Clock">
+      <property name="text">
+       <string>-1表示不提醒</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="test1">
+      <property name="text">
+       <string>提前多长时间通知全体成员</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -151,7 +192,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>AddCourse</receiver>
+   <receiver>AddActivity</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
