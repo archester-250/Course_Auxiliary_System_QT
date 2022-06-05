@@ -50,7 +50,7 @@ void AddActivity::on_pushButton_2_clicked()
             }
         }
         clog << name.toStdString() << "添加事件：" << activity.toString() << endl;
-        ofstream _config("../database/activities/" + name.toStdString(), ios::app);
+        ofstream _config("../database/activities/" + student->getName(), ios::app);
         _config << activity.storeStr() << endl;
         _config.close();
         int memberCnt = ui->memberCnt->text().toInt();
