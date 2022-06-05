@@ -7,7 +7,7 @@ AddCourseDoc::AddCourseDoc(QWidget *parent) :
     ui(new Ui::AddCourseDoc)
 {
     ui->setupUi(this);
-    ui->label_3->setText("当前无先择文件!");
+    ui->label_3->setText("当前无选择文件!");
 }
 
 AddCourseDoc::~AddCourseDoc()
@@ -86,6 +86,7 @@ void AddCourseDoc::on_pushButton_2_clicked()
             delete [] newDocuments;
         }
     }
+    qDebug() << "[LOG] administer " << name << " upload file " << QString::fromStdString(OurStr::getFilename(filename.toStdString()));
     a.saveAdminInfo();
 }
 

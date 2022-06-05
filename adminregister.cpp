@@ -31,7 +31,7 @@ void AdminRegister::on_buttonBox_accepted()
             QMessageBox::information(NULL, "Error", "输入密码为空!");
             flag = false;
         }
-        else if(login::match(name.toStdString(), password.toStdString(), 3))
+        else if(login::match(name.toStdString(), password.toStdString(), 4))
         {
             QMessageBox::information(NULL, "Error", "账户已经注册！");
             flag = false;
@@ -41,6 +41,7 @@ void AdminRegister::on_buttonBox_accepted()
     {
         QMessageBox::information(NULL, "Success", "注册成功!");
         login::writeIn(name.toStdString(), password.toStdString(), 4);
+        qDebug() << "[LOG] registered administer " << name;
     }
 }
 

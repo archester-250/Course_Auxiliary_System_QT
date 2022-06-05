@@ -381,7 +381,7 @@ void Admin::saveAdminInfo()
     {
         students[i].saveStuInfo();
     }
-    cout << "管理员信息保存完成！" << endl;
+//    cout << "管理员信息保存完成！" << endl;
 }
 
 void Admin::saveCourseInfo()

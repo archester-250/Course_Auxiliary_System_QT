@@ -400,8 +400,6 @@ void Student::saveStuInfo() {
         for (int j = 0; j < courses[i].getFinishSize(); j++) {
             out << courses[i].getFinish()[j].finish;
             if (courses[i].getFinish()[j].finish) {
-                cout << courses[i].getFinish()[j].road << endl;//BUG
-                cout << courses[i].getFinish()[j].MD5 << endl;
                 out << ' ' << courses[i].getFinish()[j].road << ' ' << courses[i].getFinish()[j].MD5 << endl;
             } else {
                 out << endl;
@@ -409,7 +407,7 @@ void Student::saveStuInfo() {
         }
     }
     out.close();
-    cout << "已自动保存学生" << name << "的课程信息" << endl;
+//    cout << "已自动保存学生" << name << "的课程信息" << endl;
 }
 
 int Student::showActivityMenu() {

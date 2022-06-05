@@ -33,6 +33,7 @@ struct info
 };
 
 extern Time modtime;
+extern float rate;
 
 
 class login

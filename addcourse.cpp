@@ -122,11 +122,11 @@ void AddCourse::on_pushButton_4_clicked()
         return;
     }
     fstream in("../database/users.data");
-    string name, temp;
+    string sname, temp;
     bool flag = false;
-    while(in >> name >> temp)
+    while(in >> sname >> temp)
     {
-        if(!OurStr::StrCmp(stuname, name))
+        if(!OurStr::StrCmp(stuname, sname))
         {
             flag = true;
             break;
@@ -155,6 +155,8 @@ void AddCourse::on_pushButton_4_clicked()
             }
         }
         QMessageBox::information(NULL, "添加成功", "已成功添加该学生！");
+        qDebug() << "[LOG] administer" << name << "adds course " << QString::fromStdString(cname)
+                 << " to student" << QString::fromStdString(stuname);
     }
     else
     {

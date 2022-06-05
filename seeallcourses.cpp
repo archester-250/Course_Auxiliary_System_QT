@@ -36,6 +36,7 @@ SeeAllCourses::SeeAllCourses(QWidget *parent) :
         text += QString::fromStdString("考试地点：" + a.getCourses()[i].getExaddress() + "\n" + "\n");
         ui->textBrowser->insertPlainText(text);
     }
+    qDebug() << "[LOG] administer " << name << " sees all courses";
 }
 
 SeeAllCourses::~SeeAllCourses()

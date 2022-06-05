@@ -76,6 +76,7 @@ void OpenFile::on_pushButton_2_clicked()
     int index = ui->comboBox->currentIndex();
     if(ui->radioButton->isChecked())
     {
+        qDebug() << "[LOG] student " << name << " tries to open " << QString::fromStdString(c.getFinish()[index].road);
         if(OurStr::getSuffix(c.getFinish()[index].road) != "txt")
         {
             if(QMessageBox::information(NULL, "提醒", "非压缩模式，点击确定打开文件！") == QMessageBox::Ok)
@@ -106,6 +107,7 @@ void OpenFile::on_pushButton_2_clicked()
     }
     else
     {
+        qDebug() << "[LOG] student " << name << " tries to open " << QString::fromStdString(c.getDocuments()[index]);
         if(OurStr::getSuffix(c.getDocuments()[index]) != "txt")
         {
             if(QMessageBox::information(NULL, "提醒", "非压缩模式，点击确定打开文件！") == QMessageBox::Ok)

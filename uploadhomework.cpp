@@ -61,6 +61,7 @@ void UploadHomework::on_pushButton_3_clicked()
             break;
         }
     }
+    qDebug() << "[LOG] student " << name << " upload the homework";
     s.saveStuInfo();
 }
 

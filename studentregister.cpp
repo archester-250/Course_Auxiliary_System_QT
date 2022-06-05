@@ -41,6 +41,30 @@ void StudentRegister::on_buttonBox_accepted()
     {
         QMessageBox::information(NULL, "Success", "注册成功!");
         login::writeIn(name.toStdString(), password.toStdString(), 3);
+        string cmd = "mkdir ..\\documents\\users\\" + name.toStdString();
+        system(cmd.c_str());
+        cmd = "cd ..\\documents\\users\\" + name.toStdString() + " & echo 0 > " + name.toStdString() + ".data";
+        system(cmd.c_str());
+        cmd = "cd ..\\documents\\users\\" + name.toStdString() + " & type nul > courseTable_" + name.toStdString() + ".csv";
+        system(cmd.c_str());
+        ifstream fin("../database/Administer.data");
+        int n;
+        fin >> n;
+        string names[n];
+        for(int i = 0; i < n; i++)
+        {
+            fin >> names[i];
+        }
+        fin.close();
+        ofstream fout("../database/Administer.data");
+        fout << n + 1 << endl;
+        fout << name.toStdString();
+        for(int i = 0; i < n; i++)
+        {
+            fout << ' ' << names[i];
+        }
+        fout.close();
+        qDebug() << "[LOG] registered student " << name;
     }
 }
 

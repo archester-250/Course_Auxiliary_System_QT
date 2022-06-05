@@ -38,6 +38,7 @@ void SeeHomework::on_pushButton_2_clicked()
             text = QString::fromStdString(to_string(i + 1) + "." + c.getHomeWork()[i] + "\n");
             ui->textBrowser->insertPlainText(text);
         }
+        qDebug() << "[LOG] student " << name << " sees homework of course " << QString::fromStdString(courseName);
     }
     else
     {

@@ -29,7 +29,8 @@ extern Student * student;
 extern Admin * admin;
 Time modtime;
 int systime = clock();
-int sys_time_bias_times = SYS_TIME_BIAS_TIMES;
+float rate = 1.f;
+int sys_time_bias_times = SYS_TIME_BIAS_TIMES * rate;
 
 void updateTime()
 {

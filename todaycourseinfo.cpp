@@ -32,4 +32,5 @@ void TodayCourseInfo::receiveName(QString name)
             }
         }
     }
+    qDebug() << "[LOG] student " << name << " sees today's courses";
 }
