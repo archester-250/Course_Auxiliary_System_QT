@@ -20,7 +20,7 @@ public:
 private slots:
     void receiveName(QString name);
     void on_pushButton_2_clicked();
-
+    void on_pushButton_add_clicked();
 private:
     Ui::AddActivity *ui;
     QString name;
@@ -31,6 +31,7 @@ private:
     int memberCnt;
     Array<string>* members;
     string description;//活动内容描述
+    string storeStr = "NULL";
 };
 
 #endif // ADDACTIVITY_H

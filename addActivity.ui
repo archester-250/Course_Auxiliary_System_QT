@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>388</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>0</x>
      <y>240</y>
      <width>401</width>
-     <height>41</height>
+     <height>232</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -35,13 +35,6 @@
        </size>
       </property>
      </spacer>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>确认</string>
-      </property>
-     </widget>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton">
@@ -69,7 +62,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>0</y>
+     <y>-10</y>
      <width>391</width>
      <height>61</height>
     </rect>
@@ -89,10 +82,10 @@
   <widget class="QWidget" name="formLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>48</y>
-     <width>281</width>
-     <height>206</height>
+     <x>30</x>
+     <y>60</y>
+     <width>341</width>
+     <height>250</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -140,44 +133,48 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="address"/>
     </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="testss">
-      <property name="text">
-       <string>除自己外活动成员数</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="memberCnt"/>
-    </item>
     <item row="4" column="0">
-     <widget class="QLabel" name="test2">
-      <property name="text">
-       <string>除自己外成员</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QLineEdit" name="member"/>
-    </item>
-    <item row="5" column="0">
      <widget class="QLabel" name="tests">
       <property name="text">
        <string>活动描述</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
+    <item row="4" column="1">
      <widget class="QLineEdit" name="description"/>
     </item>
     <item row="6" column="1">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>为当前用户增加此事件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="test2">
+      <property name="text">
+       <string>为除自己外成员增加事件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="member"/>
+    </item>
+    <item row="9" column="1">
+     <widget class="QPushButton" name="pushButton_add">
+      <property name="text">
+       <string>为此成员添加事件</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
      <widget class="QLineEdit" name="Clock">
       <property name="text">
        <string>-1表示不提醒</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="0">
+    <item row="5" column="0">
      <widget class="QLabel" name="test1">
       <property name="text">
        <string>提前多长时间通知全体成员</string>

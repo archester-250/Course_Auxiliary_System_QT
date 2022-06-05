@@ -53,15 +53,19 @@ void AddActivity::on_pushButton_2_clicked()
         ofstream _config("../database/activities/" + student->getName(), ios::app);
         _config << activity.storeStr() << endl;
         _config.close();
-        int memberCnt = ui->memberCnt->text().toInt();
-        activity.setMemberCnt(0);//TODO
-        for (int i = 0; i < activity.getMemberCnt(); i++) {
-            _config.open("../database/activities/" + activity.getMembers()->get(i), ios::app);
-            assert(_config);
-            _config << activity.storeStr() << endl;
-            _config.close();
-        }
+        storeStr = activity.storeStr();
         student->getActivityArray()->push(activity);
         QMessageBox::information(NULL, "已添加", QString::fromStdString(activity.toString()));
+}
+
+void AddActivity::on_pushButton_add_clicked(){
+    if (storeStr == "NULL"){
+        QMessageBox::information(NULL, "未定义行为", "需要先为自己增加此事件");
+        return;
+    }
+    ofstream _config("../database/activities/" + ui->member->text().toStdString(), ios::app);
+    _config << storeStr << endl;
+    _config.close();
+    QMessageBox::information(NULL, "已添加", QString::fromStdString(ui->member->text().toStdString() + " <- " + storeStr));
 }
 
