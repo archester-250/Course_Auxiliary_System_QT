@@ -37,6 +37,7 @@ bool time_conflict(int timestamp){
             tmp.hr >= cse.getTime()->starthour && \
             tmp.hr < cse.getTime()->endhour) {
             cout << "时间与课程" << cse.getName() << "冲突" << endl;
+            QMessageBox::information(NULL, "CONFLICT", "To course" + QString::fromStdString(cse.getName()));
             return true;
         }
     }
@@ -44,6 +45,7 @@ bool time_conflict(int timestamp){
         Activity activity = student->getActivityArray()->get(i);
         if (timestamp >= activity.getStartTime().timeStamp() && \
             timestamp < activity.getEndTime().timeStamp()) {
+            QMessageBox::information(NULL, "CONFILICT", "To activity" + QString::fromStdString(activity.toString()));
             cout << "时间与" << activity.toString() << "冲突" << endl;
             return true;
         }
