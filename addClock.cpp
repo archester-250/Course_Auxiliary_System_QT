@@ -47,7 +47,7 @@ void AddClock::on_pushButton_2_clicked()
             _config << clock.timestamp << " " << description << endl;
             _config.close();
         }
-        QMessageBox::information(NULL, "已添加", QString::fromStdString(time.toString()));
+        QMessageBox::information(NULL, "已添加，最后一次提醒是", QString::fromStdString(time.toString()));
         return;
 }
 

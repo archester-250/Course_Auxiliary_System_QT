@@ -37,6 +37,9 @@ void AddActivity::on_pushButton_2_clicked()
         activity.setAddress(ui->address->text().toStdString());
         activity.setDescription(ui->description->text().toStdString());
         activity.setClk(ui->Clock->text().toInt());
+        if (time_conflict(startTime.timeStamp())){
+                return;
+        }
         if (clk >= 0) {
             Time time = startTime.desc(clk);
             if (student->getClocks()->get(time.timeStamp())->first) {
