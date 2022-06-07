@@ -1,12 +1,12 @@
 ﻿#include "addClock.h"
 #include "ui_addClock.h"
-#include "utils.h"
-#include "hashMap.h"
-#include "activity.h"
-#include "student.h"
-#include "course.h"
-#include "login.h"
-#include "input.h"
+#include "src/utils.h"
+#include "src/hashMap.h"
+#include "src/activity.h"
+#include "src/student.h"
+#include "src/course.h"
+#include "src/login.h"
+#include "src/input.h"
 
 AddClock::AddClock(QWidget *parent) :
     QDialog(parent),

@@ -1,5 +1,5 @@
 ﻿#include "outofclass.h"
-#include "login.h"
+#include "src/login.h"
 #include "ui_outofclass.h"
 
 OutOfClass::OutOfClass(QWidget *parent) :

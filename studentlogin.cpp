@@ -1,6 +1,6 @@
 ﻿#include "studentlogin.h"
 #include "ui_studentlogin.h"
-#include "login.h"
+#include "src/login.h"
 StudentLogin::StudentLogin(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StudentLogin)

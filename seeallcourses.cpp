@@ -7,6 +7,16 @@ SeeAllCourses::SeeAllCourses(QWidget *parent) :
     ui(new Ui::SeeAllCourses)
 {
     ui->setupUi(this);
+}
+
+SeeAllCourses::~SeeAllCourses()
+{
+    delete ui;
+}
+
+void SeeAllCourses::receiveName(QString name)
+{
+    this->name = name;
     Admin a(name.toStdString());
     for(int i = 0; i < a.getCourse_size(); i++)
     {
@@ -37,14 +47,4 @@ SeeAllCourses::SeeAllCourses(QWidget *parent) :
         ui->textBrowser->insertPlainText(text);
     }
     qDebug() << "[LOG] administer " << name << " sees all courses";
-}
-
-SeeAllCourses::~SeeAllCourses()
-{
-    delete ui;
-}
-
-void SeeAllCourses::receiveName(QString name)
-{
-    this->name = name;
 }

@@ -1,13 +1,13 @@
 ﻿#include "seeallActivities.h"
 #include "ui_seeallActivities.h"
 #include "src/admin.h"
-#include "utils.h"
-#include "hashMap.h"
-#include "activity.h"
-#include "student.h"
-#include "course.h"
-#include "login.h"
-#include "input.h"
+#include "src/utils.h"
+#include "src/hashMap.h"
+#include "src/activity.h"
+#include "src/student.h"
+#include "src/course.h"
+#include "src/login.h"
+#include "src/input.h"
 
 SeeAllActivities::SeeAllActivities(QWidget *parent) :
     QDialog(parent),

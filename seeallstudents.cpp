@@ -7,6 +7,16 @@ SeeAllStudents::SeeAllStudents(QWidget *parent) :
     ui(new Ui::SeeAllStudents)
 {
     ui->setupUi(this);
+}
+
+SeeAllStudents::~SeeAllStudents()
+{
+    delete ui;
+}
+
+void SeeAllStudents::receiveName(QString name)
+{
+    this->name = name;
     Admin a(name.toStdString());
     for(int i = 0; i < a.getStudent_size(); i++)
     {
@@ -37,14 +47,4 @@ SeeAllStudents::SeeAllStudents(QWidget *parent) :
         }
     }
     qDebug() << "[LOG] administer " << name << " sees all students";
-}
-
-SeeAllStudents::~SeeAllStudents()
-{
-    delete ui;
-}
-
-void SeeAllStudents::receiveName(QString name)
-{
-    this->name = name;
 }
