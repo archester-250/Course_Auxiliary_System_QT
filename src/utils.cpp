@@ -7,13 +7,14 @@
 
 
 int tmptime = clock();
+extern int systime;
 
 void Time::pause() {
     tmptime = clock();
 }
 
 void Time::recover() {
-    sys_time_bias_times += (clock() - tmptime);
+    systime = clock();
 }
 
 string Time::toString() {

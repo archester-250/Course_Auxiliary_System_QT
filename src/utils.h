@@ -15,6 +15,7 @@
 using namespace std;
 
 extern int sys_time_bias_times;
+extern int systime;
 
 class Time {
 public:
