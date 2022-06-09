@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->label_2->setText(QString::fromStdString("当前时间：" + modtime.toString()));
     m_nTimerID = this->startTimer(1000);
     ui->pushButton_6->setStyleSheet("border-image: url(:/images/pause.png)");
-//    this->setStyleSheet("QMainWindow {border-image:url(:/images/yuanshen.png)}");
+    this->setStyleSheet("QMainWindow {border-image:url(:/images/yuanshen.png)}");
 }
 
 MainWindow::~MainWindow()
