@@ -20,6 +20,9 @@ public:
     explicit OutOfClass(QWidget *parent = nullptr);
     ~OutOfClass();
 
+signals:
+    void sendName(QString name);
+
 private slots:
     void receiveName(QString name);
     void on_pushButton_clicked();

@@ -14,21 +14,26 @@ SeeTodayActivities::SeeTodayActivities(QWidget *parent) :
     ui(new Ui::SeeTodayActivities)
 {
     ui->setupUi(this);
-    QString text;
-    int sz = student->getActivityArray()->size;
-        for (int i = 0; i < sz; i++) {
-            Activity activity = student->getActivityArray()->get(i);
-            if (activity.getStartTime().day != modtime.day) {
-                        continue;
-                   }
-            text += text.number(i) + "." + text.fromStdString(activity.toString()) + "\n";
-        }
-
-        ui->textBrowser->insertPlainText(text);
-        qDebug() << "[LOG] student " << name << " sees today activities " << QString::fromStdString(modtime.toString());
 }
 
 SeeTodayActivities::~SeeTodayActivities()
 {
     delete ui;
+}
+
+void SeeTodayActivities::receiveName(QString name)
+{
+    this->name = name;
+    QString text;
+    int sz = student->getActivityArray()->size;
+    for (int i = 0; i < sz; i++) {
+        Activity activity = student->getActivityArray()->get(i);
+        if (activity.getStartTime().day != modtime.day) {
+                    continue;
+               }
+        text += text.number(i) + "." + text.fromStdString(activity.toString()) + "\n";
+    }
+
+    ui->textBrowser->insertPlainText(text);
+    qDebug() << "[LOG] student " << name << " sees today activities " << QString::fromStdString(modtime.toString());
 }

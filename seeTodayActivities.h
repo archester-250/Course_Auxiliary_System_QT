@@ -1,4 +1,4 @@
-#ifndef SEETODAYACTIVITIES_H
+﻿#ifndef SEETODAYACTIVITIES_H
 #define SEETODAYACTIVITIES_H
 
 #include <QDialog>
@@ -14,6 +14,9 @@ class SeeTodayActivities : public QDialog
 public:
     explicit SeeTodayActivities(QWidget *parent = nullptr);
     ~SeeTodayActivities();
+
+private slots:
+    void receiveName(QString name);
 
 private:
     Ui::SeeTodayActivities *ui;
