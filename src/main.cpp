@@ -30,12 +30,14 @@ extern Admin * admin;
 Time modtime;
 int systime = clock();
 float rate = 1.f;
+int bias = 0;
 int sys_time_bias_times = SYS_TIME_BIAS_TIMES * rate;
 
 void updateTime()
 {
-    if (clock() - systime > sys_time_bias_times){
-        modtime.incre((clock() - systime) / sys_time_bias_times);
+    if (clock() - systime + bias > sys_time_bias_times){
+        modtime.incre((clock() - systime + bias) / sys_time_bias_times);
+        bias = (clock() - systime + bias) % sys_time_bias_times;
         systime = clock();
     }
 }
