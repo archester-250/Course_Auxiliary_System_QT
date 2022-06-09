@@ -61,7 +61,7 @@ void UploadHomework::on_pushButton_3_clicked()
             break;
         }
     }
-    qDebug() << "[LOG] student " << name << " upload the homework";
+    qDebug() << "[LOG] student " << name << " upload the homework" << QString::fromStdString(modtime.toString());
     s.saveStuInfo();
 }
 

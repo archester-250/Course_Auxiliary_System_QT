@@ -53,7 +53,7 @@ void SearchCourse::on_pushButton_2_clicked()
     {
         QMessageBox::information(NULL, "无结果", "无对应课程！");
     }
-    qDebug() << "[LOG] student " << name << " tries to search course " << courseName;
+    qDebug() << "[LOG] student " << name << " tries to search course " << courseName << QString::fromStdString(modtime.toString());
 }
 
 void SearchCourse::receiveName(QString name)

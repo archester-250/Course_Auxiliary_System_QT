@@ -41,7 +41,7 @@ void AdminRegister::on_buttonBox_accepted()
     {
         QMessageBox::information(NULL, "Success", "注册成功!");
         login::writeIn(name.toStdString(), password.toStdString(), 4);
-        qDebug() << "[LOG] registered administer " << name;
+        qDebug() << "[LOG] registered administer " << name << QString::fromStdString(modtime.toString());
     }
 }
 

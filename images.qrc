@@ -3,5 +3,6 @@
         <file>images/pause.png</file>
         <file>images/play-one.png</file>
         <file>images/yuanshen.png</file>
+        <file>images/drone.ico</file>
     </qresource>
 </RCC>

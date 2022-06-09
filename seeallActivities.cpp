@@ -22,6 +22,7 @@ SeeAllActivities::SeeAllActivities(QWidget *parent) :
         }
 
         ui->textBrowser->insertPlainText(text);
+        qDebug() << "[LOG] student " << name << " sees all activities " << QString::fromStdString(modtime.toString());
 }
 
 SeeAllActivities::~SeeAllActivities()

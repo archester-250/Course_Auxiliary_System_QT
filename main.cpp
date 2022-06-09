@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
         }
     }
     MainWindow w;
+    w.setWindowTitle(QString::fromStdString("课程辅助系统"));  //修改这句即可，但是字母，汉字乱码
     w.show();
     int con = a.exec();
     ofstream _config("../database/config");

@@ -213,9 +213,9 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>200</x>
       <y>90</y>
-      <width>61</width>
+      <width>91</width>
       <height>20</height>
      </rect>
     </property>
@@ -226,6 +226,9 @@
     </property>
     <property name="text">
      <string>时停功能</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

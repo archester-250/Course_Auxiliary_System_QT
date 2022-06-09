@@ -46,5 +46,5 @@ void SeeAllCourses::receiveName(QString name)
         text += QString::fromStdString("考试地点：" + a.getCourses()[i].getExaddress() + "\n" + "\n");
         ui->textBrowser->insertPlainText(text);
     }
-    qDebug() << "[LOG] administer " << name << " sees all courses";
+    qDebug() << "[LOG] administer " << name << " sees all courses" << QString::fromStdString(modtime.toString());
 }

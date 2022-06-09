@@ -156,7 +156,7 @@ void AddCourse::on_pushButton_4_clicked()
         }
         QMessageBox::information(NULL, "添加成功", "已成功添加该学生！");
         qDebug() << "[LOG] administer" << name << "adds course " << QString::fromStdString(cname)
-                 << " to student" << QString::fromStdString(stuname);
+                 << " to student" << QString::fromStdString(stuname) << QString::fromStdString(modtime.toString());
     }
     else
     {

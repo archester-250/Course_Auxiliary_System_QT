@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->label_2->setText(QString::fromStdString("当前时间：" + modtime.toString()));
     m_nTimerID = this->startTimer(1000);
     ui->pushButton_6->setStyleSheet("border-image: url(:/images/pause.png)");
-    this->setStyleSheet("QMainWindow {border-image:url(:/images/yuanshen.png)}");
+//    this->setStyleSheet("QMainWindow {border-image:url(:/images/yuanshen.png)}");
 }
 
 MainWindow::~MainWindow()
@@ -23,24 +23,27 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    qDebug() << "[LOG] student login";
+    qDebug() << "[LOG] student login" << QString::fromStdString(modtime.toString());
     StudentLogin sl;
+    sl.setWindowTitle(QString::fromStdString("学生登录"));
     sl.exec();
 }
 
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    qDebug() << "[LOG] administer login";
+    qDebug() << "[LOG] administer login" << QString::fromStdString(modtime.toString());
     AdminLogin al;
+    al.setWindowTitle(QString::fromStdString("管理员登录"));
     al.exec();
 }
 
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    qDebug() << "[LOG] student register";
+    qDebug() << "[LOG] student register" << QString::fromStdString(modtime.toString());
     StudentRegister sr;
+    sr.setWindowTitle(QString::fromStdString("学生注册"));
     sr.exec();
 }
 
@@ -66,8 +69,9 @@ void MainWindow::handleTimeout()
 
 void MainWindow::on_pushButton_clicked()
 {
-    qDebug() << "[LOG] administer register";
+    qDebug() << "[LOG] administer register" << QString::fromStdString(modtime.toString());
     AdminRegister ar;
+    ar.setWindowTitle(QString::fromStdString("管理员注册"));
     ar.exec();
 }
 

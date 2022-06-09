@@ -42,6 +42,7 @@ void AddClock::on_pushButton_2_clicked()
             clock.addEvent(description);
             student->getClocks()->put(time.timeStamp(), clock);
             clog << student->getName() << "已设置" << time.toString() << "的闹钟" << endl;
+            qDebug() << "[LOG] student " << name << " adds clock of " << QString::fromStdString(time.toString()) << QString::fromStdString(modtime.toString());
             time.incre(interval);
             ofstream _config("../database/clocks/" + student->getName(), ios::app);
             _config << clock.timestamp << " " << description << endl;

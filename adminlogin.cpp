@@ -34,8 +34,9 @@ void AdminLogin::on_buttonBox_accepted()
     if(flag)
     {
         QMessageBox::information(NULL, "Success", "登录成功!");
-        qDebug() << "[LOG] login administer " << name << " success";
+        qDebug() << "[LOG] login administer " << name << " success" << QString::fromStdString(modtime.toString());
         AdminMenu am;
+        am.setWindowTitle(QString::fromStdString("管理员系统"));
         connect(this, SIGNAL(sendName(QString)), &am, SLOT(receiveName(QString)));
         emit sendName(name);
         am.exec();

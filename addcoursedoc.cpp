@@ -86,7 +86,7 @@ void AddCourseDoc::on_pushButton_2_clicked()
             delete [] newDocuments;
         }
     }
-    qDebug() << "[LOG] administer " << name << " upload file " << QString::fromStdString(OurStr::getFilename(filename.toStdString()));
+    qDebug() << "[LOG] administer " << name << " upload file " << QString::fromStdString(OurStr::getFilename(filename.toStdString())) << QString::fromStdString(modtime.toString());
     a.saveAdminInfo();
 }
 

@@ -487,7 +487,7 @@ void Student::InitStudent() {
                 clocks->put(time.timeStamp(), clock);
             }
         }
-        clog << "读取本地活动：" << activity.toString() << endl;
+//        clog << "读取本地活动：" << activity.toString() << endl;
         Activities->push(activity);
     }
     db.close();
@@ -497,7 +497,7 @@ void Student::InitStudent() {
         clock.setTimestamp(startTime);
         clock.addEvent(description);
         student->getClocks()->put(startTime, clock);
-        clog << "读取本地闹钟：" << clock.timestamp << ":" << description << endl;
+//        clog << "读取本地闹钟：" << clock.timestamp << ":" << description << endl;
     }
 }
 

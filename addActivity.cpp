@@ -52,6 +52,7 @@ void AddActivity::on_pushButton_2_clicked()
             }
         }
         clog << name.toStdString() << "添加事件：" << activity.toString() << endl;
+        qDebug() << "[LOG] student " << name << " adds activity " << QString::fromStdString(modtime.toString());
         ofstream _config("../database/activities/" + student->getName(), ios::app);
         _config << activity.storeStr() << endl;
         _config.close();
@@ -68,6 +69,7 @@ void AddActivity::on_pushButton_add_clicked(){
     ofstream _config("../database/activities/" + ui->member->text().toStdString(), ios::app);
     _config << storeStr << endl;
     _config.close();
+    qDebug() << "[LOG] student " << name << " adds activity to " << ui->member->text() << QString::fromStdString(modtime.toString());
     QMessageBox::information(NULL, "已添加", QString::fromStdString(ui->member->text().toStdString() + " <- " + storeStr));
 }
 

@@ -64,7 +64,7 @@ void StudentRegister::on_buttonBox_accepted()
             fout << ' ' << names[i];
         }
         fout.close();
-        qDebug() << "[LOG] registered student " << name;
+        qDebug() << "[LOG] registered student " << name << QString::fromStdString(modtime.toString());
     }
 }
 

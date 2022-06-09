@@ -18,6 +18,7 @@ OutOfClass::~OutOfClass()
 void OutOfClass::on_pushButton_clicked()
 {
     AddActivity aa;
+    aa.setWindowTitle(QString::fromStdString("添加活动"));
     connect(this, SIGNAL(sendName(QString)), &aa, SLOT(receiveName(QString)));
     aa.exec();
 }
@@ -26,6 +27,7 @@ void OutOfClass::on_pushButton_clicked()
 void OutOfClass::on_pushButton_2_clicked()
 {
     SeeTodayActivities sta;
+    sta.setWindowTitle(QString::fromStdString("查看今日活动"));
     connect(this, SIGNAL(sendName(QString)), &sta, SLOT(receiveName(QString)));
     sta.exec();
 }
@@ -34,6 +36,7 @@ void OutOfClass::on_pushButton_2_clicked()
 void OutOfClass::on_pushButton_3_clicked()
 {
     SeeAllActivities saa;
+    saa.setWindowTitle(QString::fromStdString("查看所有活动"));
     connect(this, SIGNAL(sendName(QString)), &saa, SLOT(receiveName(QString)));
     saa.exec();
 }
@@ -42,6 +45,7 @@ void OutOfClass::on_pushButton_3_clicked()
 void OutOfClass::on_pushButton_4_clicked()
 {
     AddClock ac;
+    ac.setWindowTitle(QString::fromStdString("添加闹钟"));
     connect(this, SIGNAL(sendName(QString)), &ac, SLOT(receiveName(QString)));
     ac.exec();
 }

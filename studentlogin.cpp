@@ -41,8 +41,9 @@ void StudentLogin::on_buttonBox_accepted()
     if(flag)
     {
         QMessageBox::information(NULL, "Success", "登录成功!");
-        qDebug() << "[LOG] login student " << name << " success";
+        qDebug() << "[LOG] login student " << name << " success" << QString::fromStdString(modtime.toString());
         SystemChoose sc;
+        sc.setWindowTitle(QString::fromStdString("系统选择"));
         student = new Student(name.toStdString());
         student->InitStudent();
         connect(this, SIGNAL(sendName(QString)), &sc, SLOT(receiveName(QString)));

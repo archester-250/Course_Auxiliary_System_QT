@@ -46,5 +46,5 @@ void SeeAllStudents::receiveName(QString name)
             }
         }
     }
-    qDebug() << "[LOG] administer " << name << " sees all students";
+    qDebug() << "[LOG] administer " << name << " sees all students" << QString::fromStdString(modtime.toString());
 }

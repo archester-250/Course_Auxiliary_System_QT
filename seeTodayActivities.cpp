@@ -25,6 +25,7 @@ SeeTodayActivities::SeeTodayActivities(QWidget *parent) :
         }
 
         ui->textBrowser->insertPlainText(text);
+        qDebug() << "[LOG] student " << name << " sees today activities " << QString::fromStdString(modtime.toString());
 }
 
 SeeTodayActivities::~SeeTodayActivities()
