@@ -51,7 +51,7 @@ void AddActivity::on_pushButton_2_clicked()
                 student->getClocks()->put(time.timeStamp(), clock);
             }
         }
-        clog << name.toStdString() << "添加事件：" << activity.toString() << endl;
+//        clog << name.toStdString() << "添加事件：" << activity.toString() << endl;
         qDebug() << "[LOG] student " << name << " adds activity " << QString::fromStdString(modtime.toString());
         ofstream _config("../database/activities/" + student->getName(), ios::app);
         _config << activity.storeStr() << endl;
