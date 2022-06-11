@@ -65,6 +65,19 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    images/benbu.png \
+    images/between.png \
+    images/class.jpg \
+    images/log.jpg \
+    images/search.png \
+    images/search.webp \
+    images/set_time.jpg \
+    images/set_v.jpg \
+    images/shahe.jpg \
+    images/switch_benbu.jpg \
+    images/switch_between.jpg \
+    images/switch_shahe.png \
+    images/switch_shahe.webp \
     l2p.txt \
     log.txt \
     shuttle_schedule.txt \

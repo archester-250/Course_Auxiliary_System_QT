@@ -180,8 +180,8 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::mouseDoubleClickEvent (QMouseEvent *e) {
-    int x = e->position().x();
-    int y = e->position().y();
+    int x = e->position().x() - offset_x;
+    int y = e->position().y() - offset_y;
 //    int x = e->x()-offset_x;
 //    int y = e->y()-offset_y;
     for(auto ver : vertices) {
@@ -462,23 +462,23 @@ void MainWindow::readShuttleSchedule() {
 }
 
 void MainWindow::initAction() {
-    findpath = new QAction(QIcon("../NAV/images/search.webp"),"搜索路径", this);
+    findpath = new QAction(QIcon("../NAV/images/search.png"),"搜索路径", this);
     findpath->setStatusTip ("搜索路线");
     connect(findpath, &QAction::triggered, this, &MainWindow::findPath);
 
-    search_spot = new QAction(QIcon("../NAV/images/search.webp"),"搜索地点", this);
+    search_spot = new QAction(QIcon("../NAV/images/search.png"),"搜索地点", this);
     search_spot->setStatusTip ("搜索地点");
     connect(search_spot, &QAction::triggered, this, &MainWindow::searchSpot);
 
-    search_near = new QAction(QIcon("：../NAV/images/search.webp"),"", this);
+    search_near = new QAction(QIcon("../NAV/images/search.png"),"", this);
     search_near->setStatusTip ("");
     connect(search_near, &QAction::triggered, this, &MainWindow::searchNear);
 
-    ant_find = new QAction(QIcon("../NAV/images/search.webp"),"多点寻路", this);
+    ant_find = new QAction(QIcon("../NAV/images/search.png"),"多点寻路", this);
     ant_find->setStatusTip ("多点寻路");
     connect(ant_find, &QAction::triggered, this, &MainWindow::antFind);
 
-    switch_shahe = new QAction(QIcon("../NAV/images/switch_shahe.webp"),"切换到沙河", this);
+    switch_shahe = new QAction(QIcon("../NAV/images/switch_shahe.png"),"切换到沙河", this);
     switch_shahe->setStatusTip ("切换到沙河");
     connect(switch_shahe, &QAction::triggered, this, &MainWindow::switchShahe);
 
@@ -510,14 +510,14 @@ void MainWindow::initToolBar() {
     le_search = new QLineEdit;
     le_begin = new QLineEdit;
     le_end = new QLineEdit;
-    //le_searchnear = new QLineEdit;
+    le_searchnear = new QLineEdit;
     le_search->setPlaceholderText("输入地点");
     connect(le_search, &QLineEdit::returnPressed, this, [=](){search_fzs(le_search->text());});
     le_begin->setPlaceholderText("输入起点");
     connect(le_begin, &QLineEdit::returnPressed, this, [=](){findpath_begin_fzs(le_begin->text());});
     le_end->setPlaceholderText("输入终点");
     connect(le_end, &QLineEdit::returnPressed, this, [=](){findpath_end_fzs(le_end->text());});
-    //le_searchnear->setPlaceholderText("输入范围");
+    le_searchnear->setPlaceholderText("输入范围");
     lb_search = new QLabel("搜索地点");
     lb_searchnear = new QLabel("搜索附近");
     lb_begin = new QLabel("起点");
@@ -540,7 +540,7 @@ void MainWindow::initToolBar() {
     connect(le_search, SIGNAL(textEdited(QString)), this, SLOT(stopTime()));
     connect(le_begin, SIGNAL(textEdited(QString)), this, SLOT(stopTime()));
     connect(le_end, SIGNAL(textEdited(QString)), this, SLOT(stopTime()));
-    //connect(le_searchnear, SIGNAL(textEdited(QString)), this, SLOT(stopTime()));
+    connect(le_searchnear, SIGNAL(textEdited(QString)), this, SLOT(stopTime()));
     connect(le_hour, SIGNAL(textEdited(QString)), this, SLOT(stopTime()));
     connect(le_min, SIGNAL(textEdited(QString)), this, SLOT(stopTime()));
     connect(le_sec, SIGNAL(textEdited(QString)), this, SLOT(stopTime()));
@@ -555,8 +555,8 @@ void MainWindow::initToolBar() {
     toolbar->addWidget(le_end);
     toolbar->addAction(findpath);
     toolbar->addSeparator();
-//    toolbar->addWidget(lb_searchnear);
-//    toolbar->addWidget(le_searchnear);
+    toolbar->addWidget(lb_searchnear);
+    toolbar->addWidget(le_searchnear);
     toolbar->addAction(search_near);
     toolbar->addSeparator();
     toolbar->addWidget(lb_antfind);
