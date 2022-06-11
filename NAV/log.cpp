@@ -16,7 +16,7 @@ void Log::readLog() {
     ifstream fin;
     fin.open(LOG_PATH,ios::in);
     if(!fin.is_open()) {
-        qDebug()<<"file open error"<<endl;
+//        qDebug()<<"file open error"<<endl;
         exit(1);
     }
     int wday,hour,min,sec;
@@ -26,14 +26,14 @@ void Log::readLog() {
         addItem(tmp,QString::fromStdString(op),QString::fromStdString(inf));
     }
     fin.close();
-    qDebug()<<"log file load successfully"<<endl;
+//    qDebug()<<"log file load successfully"<<endl;
 }
 
 void Log::writeLog() {
     ofstream fout;
     fout.open(LOG_PATH,ios::out|ios::trunc);
     if(!fout.is_open()) {
-        qDebug()<<"file open error"<<endl;
+//        qDebug()<<"file open error"<<endl;
         exit(1);
     }
     for(auto it : log_list) {
@@ -41,7 +41,7 @@ void Log::writeLog() {
               it.clk.get_sec()<<" "<<it.ope.toStdString()<<" "<<it.info.toStdString()<<endl;
     }
     fout.close();
-    qDebug()<<"log file write successfully"<<endl;
+//    qDebug()<<"log file write successfully"<<endl;
 }
 
 void Log::addItem(Clock clk, QString op, QString inf) {

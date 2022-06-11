@@ -55,6 +55,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    MainWindow(QWidget *parent = nullptr);
     explicit MainWindow(Account *online_account, QWidget *parent = nullptr);
     ~MainWindow();
 

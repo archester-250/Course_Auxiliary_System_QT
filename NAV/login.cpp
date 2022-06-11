@@ -38,7 +38,7 @@ void Login::readAccounts() {
     ifstream fin;
     fin.open(ACCOUNTS_PATH, ios::in);
     if(!fin.is_open()) {
-        qDebug()<<"accounts file open error"<<endl;
+//        qDebug()<<"accounts file open error"<<endl;
         exit(1);
     }
     string id,pwd,course_name;
@@ -65,7 +65,7 @@ void Login::readAccounts() {
         accounts[QString::fromStdString(id)] = account;
     }
     fin.close();
-    qDebug()<<"accounts load success"<<endl;
+//    qDebug()<<"accounts load success"<<endl;
 }
 
 bool Login::checkLogin(const QString &id, const QString &pwd) {

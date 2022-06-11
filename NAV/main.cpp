@@ -63,7 +63,8 @@ int main(int argc, char *argv[])
     Login login;
     if(login.exec()==QDialog::Accepted)
     {
-        MainWindow mw(login.get_online_account());
+//        MainWindow mw(login.get_online_account());
+        MainWindow mw;
         mw.show();
         return a.exec();
     }
