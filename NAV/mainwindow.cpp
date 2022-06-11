@@ -36,8 +36,8 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
     scene = new QGraphicsScene;
     scene->setSceneRect(0,0,990,640);
     shahe.load("../NAV/images/shahe.jpg");
-    benbu.load("../NAV/benbu.png");
-    between.load("../NAV/between.png");
+    benbu.load("../NAV/images/benbu.png");
+    between.load("../NAV/images/between.png");
     view = new QGraphicsView(scene);
 //    view->setAlignment(Qt::AlignLeft|Qt::AlignTop);
     map_item = new QGraphicsPixmapItem(shahe);
@@ -555,7 +555,7 @@ void MainWindow::initToolBar() {
     toolbar->addWidget(le_end);
     toolbar->addAction(findpath);
     toolbar->addSeparator();
-    toolbar->addWidget(lb_searchnear);
+//    toolbar->addWidget(lb_searchnear);
     toolbar->addWidget(le_searchnear);
     toolbar->addAction(search_near);
     toolbar->addSeparator();
