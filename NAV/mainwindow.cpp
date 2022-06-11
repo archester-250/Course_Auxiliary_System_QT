@@ -35,9 +35,9 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
     setWindowTitle("北邮校园导航系统");                     //主界面
     scene = new QGraphicsScene;
     scene->setSceneRect(0,0,990,640);
-    shahe.load("../NAV/images/shahe");
-    benbu.load("../NAV/images/benbu");
-    between.load("../NAV/images/between");
+    shahe.load("../NAV/images/shahe.jpg");
+    benbu.load("../NAV/images/benbu.png");
+    between.load("../NAV/images/between.png");
     view = new QGraphicsView(scene);
 //    view->setAlignment(Qt::AlignLeft|Qt::AlignTop);
     map_item = new QGraphicsPixmapItem(shahe);
@@ -458,47 +458,47 @@ void MainWindow::readShuttleSchedule() {
         shuttle_schedule.append(tmp);
     }
     fin.close();
-    qDebug()<<"shuttle schedule load success";
+    qDebug()<<"shuttle schedule load success\n";
 }
 
 void MainWindow::initAction() {
-    findpath = new QAction(QIcon("../NAV/images/search"),"搜索路径", this);
+    findpath = new QAction(QIcon("../NAV/images/search.webp"),"搜索路径", this);
     findpath->setStatusTip ("搜索路线");
     connect(findpath, &QAction::triggered, this, &MainWindow::findPath);
 
-    search_spot = new QAction(QIcon("../NAV/images/search"),"搜索地点", this);
+    search_spot = new QAction(QIcon("../NAV/images/search.webp"),"搜索地点", this);
     search_spot->setStatusTip ("搜索地点");
     connect(search_spot, &QAction::triggered, this, &MainWindow::searchSpot);
 
-    search_near = new QAction(QIcon("：../NAV/images/search"),"", this);
+    search_near = new QAction(QIcon("：../NAV/images/search.webp"),"", this);
     search_near->setStatusTip ("");
     connect(search_near, &QAction::triggered, this, &MainWindow::searchNear);
 
-    ant_find = new QAction(QIcon("../NAV/images/search"),"多点寻路", this);
+    ant_find = new QAction(QIcon("../NAV/images/search.webp"),"多点寻路", this);
     ant_find->setStatusTip ("多点寻路");
     connect(ant_find, &QAction::triggered, this, &MainWindow::antFind);
 
-    switch_shahe = new QAction(QIcon("../NAV/images/switch_shahe"),"切换到沙河", this);
+    switch_shahe = new QAction(QIcon("../NAV/images/switch_shahe.webp"),"切换到沙河", this);
     switch_shahe->setStatusTip ("切换到沙河");
     connect(switch_shahe, &QAction::triggered, this, &MainWindow::switchShahe);
 
-    switch_between = new QAction(QIcon("../NAV/images/switch_between"),"切换到校外", this);
+    switch_between = new QAction(QIcon("../NAV/images/switch_between.jpg"),"切换到校外", this);
     switch_between->setStatusTip ("切换到校外");
     connect(switch_between, &QAction::triggered, this, &MainWindow::switchBetween);
 
-    switch_benbu = new QAction(QIcon("../NAV/images/switch_benbu"),"切换到本部", this);
+    switch_benbu = new QAction(QIcon("../NAV/images/switch_benbu.jpg"),"切换到本部", this);
     switch_benbu->setStatusTip ("切换到本部");
     connect(switch_benbu, &QAction::triggered, this, &MainWindow::switchBenbu);
 
-    set_time = new QAction(QIcon("../NAV/images/set_time"),"设置时间", this);
+    set_time = new QAction(QIcon("../NAV/images/set_time.jpg"),"设置时间", this);
     set_time->setStatusTip ("设置时间");
     connect(set_time, &QAction::triggered, this, &MainWindow::setTime);
 
-    log_search = new QAction(QIcon("../NAV/images/log"),"日志搜索", this);
+    log_search = new QAction(QIcon("../NAV/images/log.jpg"),"日志搜索", this);
     log_search->setStatusTip("日志搜索");
     connect(log_search, &QAction::triggered, this, &MainWindow::logSearch);
 
-    go_to_class = new QAction(QIcon("../NAV/images/class"),"导航去教室", this);
+    go_to_class = new QAction(QIcon("../NAV/images/class.jpg"),"导航去教室", this);
     go_to_class->setStatusTip("导航去教室");
     connect(go_to_class, &QAction::triggered, this, &MainWindow::gotoClass);
 
@@ -519,7 +519,7 @@ void MainWindow::initToolBar() {
     connect(le_end, &QLineEdit::returnPressed, this, [=](){findpath_end_fzs(le_end->text());});
     //le_searchnear->setPlaceholderText("输入范围");
     lb_search = new QLabel("搜索地点");
-    //lb_searchnear = new QLabel("搜索附近");
+    lb_searchnear = new QLabel("搜索附近");
     lb_begin = new QLabel("起点");
     lb_end = new QLabel("终点");
     lb_antfind = new QLabel("多点寻路");
@@ -555,8 +555,8 @@ void MainWindow::initToolBar() {
     toolbar->addWidget(le_end);
     toolbar->addAction(findpath);
     toolbar->addSeparator();
-    toolbar->addWidget(lb_searchnear);
-    //toolbar->addWidget(le_searchnear);
+//    toolbar->addWidget(lb_searchnear);
+    toolbar->addWidget(le_searchnear);
     toolbar->addAction(search_near);
     toolbar->addSeparator();
     toolbar->addWidget(lb_antfind);
@@ -2203,7 +2203,7 @@ void MainWindow::antfindStart() {
                 tmp_rout_time_shuttle.append(ver);
             }
         }
-        //qDebug()<<"ant_time_shuttle convert to path done"<<endl;
+        qDebug()<<"ant_time_shuttle convert to path done\n";
 
         //dis_bus
         //如果沙河在前半部分
