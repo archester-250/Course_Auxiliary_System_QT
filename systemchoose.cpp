@@ -40,6 +40,6 @@ void SystemChoose::receiveName(QString s)
 
 void SystemChoose::on_pushButton_clicked()
 {
-    system("start ..\\Course_Auxiliary_System_QT\\build-NAV-Desktop_Qt_6_2_4_MinGW_64_bit-Debug\\debug\\NAV.exe");
+    system("cd ..\\Course_Auxiliary_System_QT\\build-NAV-Desktop_Qt_6_2_4_MinGW_64_bit-Debug & start NAV.exe");
 }
 
