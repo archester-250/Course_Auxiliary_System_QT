@@ -556,7 +556,7 @@ void MainWindow::initToolBar() {
     toolbar->addAction(findpath);
     toolbar->addSeparator();
 //    toolbar->addWidget(lb_searchnear);
-    toolbar->addWidget(le_searchnear);
+//    toolbar->addWidget(le_searchnear);
     toolbar->addAction(search_near);
     toolbar->addSeparator();
     toolbar->addWidget(lb_antfind);

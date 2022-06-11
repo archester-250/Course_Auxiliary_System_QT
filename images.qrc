@@ -1,19 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/pause.png</file>
-        <file>images/play-one.png</file>
         <file>images/yuanshen.png</file>
         <file>images/drone.ico</file>
-        <file>images/benbu.png</file>
-        <file>images/between.png</file>
-        <file>images/class.jpg</file>
-        <file>images/log.jpg</file>
-        <file>images/search.webp</file>
-        <file>images/set_time.jpg</file>
-        <file>images/set_v.jpg</file>
-        <file>images/shahe.jpg</file>
-        <file>images/switch_benbu.jpg</file>
-        <file>images/switch_between.jpg</file>
-        <file>images/switch_shahe.webp</file>
+        <file>images/pause.png</file>
+        <file>images/play-one.png</file>
     </qresource>
 </RCC>
