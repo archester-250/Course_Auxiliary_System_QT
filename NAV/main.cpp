@@ -1,14 +1,14 @@
 #include "mainwindow.h"
-
+#include <iostream>
 #include <QApplication>
 
-const char *ADJMAP_PATH = "/mySoftware/C++Qt/myProject/NAV/adjmap.txt";
-const char *VERTICES_PATH = "/mySoftware/C++Qt/myProject/NAV/vertices.txt";
-const char *L2P_PATH = "/mySoftware/C++Qt/myProject/NAV/l2p.txt";
-const char *SHUTTLE_SCHEDULE_PATH = "/mySoftware/C++Qt/myProject/NAV/shuttle_schedule.txt";
-const char *ACCOUNTS_PATH = "/mySoftware/C++Qt/myProject/NAV/accounts.txt";
+const char *ADJMAP_PATH = "../NAV/adjmap.txt";
+const char *VERTICES_PATH = "../NAV/vertices.txt";
+const char *L2P_PATH = "../NAV/l2p.txt";
+const char *SHUTTLE_SCHEDULE_PATH = "../NAV/shuttle_schedule.txt";
+const char *ACCOUNTS_PATH = "../NAV/accounts.txt";
 //日志文件
-const char *LOG_PATH = "/mySoftware/C++Qt/myProject/NAV/log.txt";
+const char *LOG_PATH = "../NAV/log.txt";
 
 //日志文件各种操作
 const char *SWC_SHAHE = "切换沙河地图";
@@ -61,10 +61,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Login login;
-    if(login.exec()==QDialog::Accepted)
-    {
-//        MainWindow mw(login.get_online_account());
-        MainWindow mw;
+    if(login.exec()==QDialog::Accepted){
+        MainWindow mw(login.get_online_account());
         mw.show();
         return a.exec();
     }
