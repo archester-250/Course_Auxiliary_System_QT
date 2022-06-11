@@ -1,4 +1,4 @@
-
+﻿
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -26,7 +26,7 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
     clock = new Clock;
     log = new Log;
     log_dialog = new Log_search(log);
-    //qDebug()<<"Log file init down"<<endl;
+    qDebug()<<"Log file init down";
 
     initTimer();
     initAction();
@@ -35,15 +35,15 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
     setWindowTitle("北邮校园导航系统");                     //主界面
     scene = new QGraphicsScene;
     scene->setSceneRect(0,0,990,640);
-    shahe.load("/mySoftware/C++Qt/myProject/NAV/images/shahe");
-    benbu.load("/mySoftware/C++Qt/myProject/NAV/images/benbu");
-    between.load("/mySoftware/C++Qt/myProject/NAV/images/between");
+    shahe.load("../NAV/images/shahe");
+    benbu.load("../NAV/images/benbu");
+    between.load("../NAV/images/between");
     view = new QGraphicsView(scene);
 //    view->setAlignment(Qt::AlignLeft|Qt::AlignTop);
     map_item = new QGraphicsPixmapItem(shahe);
     scene->addItem(map_item);
     view->setFixedSize (1010, 650);
-    //qDebug()<<"images init done"<<endl;
+    qDebug()<<"images init done";
 
     main_widget = new QWidget;
     glayout = new QGridLayout(main_widget);
@@ -52,7 +52,7 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
     glayout->addWidget(view,0,0,GRID_ROWS,1);
     lb_current = new QLabel;
     glayout->addWidget(lb_current,GRID_ROWS+1,0);
-    //qDebug()<<"glayout init done"<<endl;
+    qDebug()<<"glayout init done";
 
     //初始化当前圆点
     current_point = new QGraphicsEllipseItem(QRect(0,0,10,10));
@@ -61,7 +61,7 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
     current_point->setFlag(QGraphicsItem::ItemIsPanel);
     scene->addItem(current_point);
     current_point->setPos(current->get_x(), current->get_y());
-    //qDebug()<<"current point init down"<<endl;
+    qDebug()<<"current point init down";
 
     //初始化导航pathItem
     main_path_item = new QGraphicsPathItem;
@@ -75,10 +75,10 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
     main_path_item->setFlag (QGraphicsItem::ItemIsPanel);
     main_path_item->setPath(*shahe_painter_path);
     scene->addItem (main_path_item);
-    //qDebug()<<"painter path init done"<<endl;
+    qDebug()<<"painter path init done";
 
     view->show();
-    //qDebug()<<"view show"<<endl;
+    qDebug()<<"view show";
 
     lb_class = new QLabel;
 
@@ -122,7 +122,7 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
     pbt_fuzzysearch_reenter = new QPushButton("重新输入");
     connect(pbt_fuzzysearch_reenter, &QPushButton::clicked, this, &MainWindow::reenter);
 
-    //qDebug()<<"pbt init done"<<endl;
+    qDebug()<<"pbt init done";
 
     //初始化中间线路
     for(int i = 0; i<S2B_BUS_PATH_NO.size(); i++) {
@@ -141,7 +141,7 @@ MainWindow::MainWindow(Account *online_account, QWidget *parent) :
             shuttle_total_time += adj_map[S2B_SHUTTLE_PATH_NO[i-1]][S2B_SHUTTLE_PATH_NO[i]]->get_distance()/(SHUTTLE*adj_map[S2B_SHUTTLE_PATH_NO[i-1]][S2B_SHUTTLE_PATH_NO[i]]->get_crowdness());
         }
     }
-    //qDebug()<<"between path init down"<<endl;
+    qDebug()<<"between path init down";
 }
 
 MainWindow::~MainWindow()
@@ -346,7 +346,7 @@ void MainWindow::readAdj() {
     ifstream fin;
     fin.open(ADJMAP_PATH,ios::in);
     if(!fin.is_open()) {
-        //qDebug()<<"file open error"<<endl;
+        qDebug()<<"file open error";
         exit(1);
     }
     int no;
@@ -368,7 +368,7 @@ void MainWindow::readAdj() {
         adj_map.push_back(temp);
     }
     fin.close();
-    //qDebug()<<"map load success"<<endl;
+    qDebug()<<"map load success";
     dij_searchnear.set_adj_map(adj_map);
     dij_findpath_time.set_adj_map(adj_map);
     dij_findpath_dis.set_adj_map(adj_map);
@@ -389,7 +389,7 @@ void MainWindow::readVer() {
     ifstream fin;
     fin.open(VERTICES_PATH,ios::in);
     if(!fin.is_open()) {
-        //qDebug()<<"file open error"<<endl;
+        qDebug()<<"file open error";
         exit(1);
     }
     int no;
@@ -402,7 +402,7 @@ void MainWindow::readVer() {
         vertices.push_back(ver);
     }
     fin.close();
-    //qDebug()<<"vertices load success"<<endl;
+    qDebug()<<"vertices load success";
     dij_searchnear.set_vertices(vertices);
     dij_findpath_dis.set_vertices(vertices);
     dij_findpath_time.set_vertices(vertices);
@@ -423,7 +423,7 @@ void MainWindow::readL2P() {
     ifstream fin;
     fin.open(L2P_PATH, ios::in);
     if(!fin.is_open()) {
-        //qDebug()<<"file open error"<<endl;
+        qDebug()<<"file open error";
         exit(1);
     }
     string logic;
@@ -441,7 +441,7 @@ void MainWindow::readL2P() {
         logic2phy[QString::fromStdString(logic)] = temp;
     }
     fin.close();
-    //qDebug()<<"L2P load success"<<endl;
+    qDebug()<<"L2P load success";
 }
 
 //班车时刻表，每行是一班车的发车时间
@@ -449,7 +449,7 @@ void MainWindow::readShuttleSchedule() {
     ifstream fin;
     fin.open(SHUTTLE_SCHEDULE_PATH, ios::in);
     if(!fin.is_open()) {
-        //qDebug()<<"file open error"<<endl;
+        qDebug()<<"file open error";
         exit(1);
     }
     int min,hour,wday;
@@ -458,51 +458,51 @@ void MainWindow::readShuttleSchedule() {
         shuttle_schedule.append(tmp);
     }
     fin.close();
-    //qDebug()<<"shuttle schedule load success"<<endl;
+    qDebug()<<"shuttle schedule load success";
 }
 
 void MainWindow::initAction() {
-    findpath = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/search"),"搜索路径", this);
+    findpath = new QAction(QIcon("../NAV/images/search"),"搜索路径", this);
     findpath->setStatusTip ("搜索路线");
     connect(findpath, &QAction::triggered, this, &MainWindow::findPath);
 
-    search_spot = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/search"),"搜索地点", this);
+    search_spot = new QAction(QIcon("../NAV/images/search"),"搜索地点", this);
     search_spot->setStatusTip ("搜索地点");
     connect(search_spot, &QAction::triggered, this, &MainWindow::searchSpot);
 
-    search_near = new QAction(QIcon("：/mySoftware/C++Qt/myProject/NAV/images/search"),"", this);
+    search_near = new QAction(QIcon("：../NAV/images/search"),"", this);
     search_near->setStatusTip ("");
     connect(search_near, &QAction::triggered, this, &MainWindow::searchNear);
 
-    ant_find = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/search"),"多点寻路", this);
+    ant_find = new QAction(QIcon("../NAV/images/search"),"多点寻路", this);
     ant_find->setStatusTip ("多点寻路");
     connect(ant_find, &QAction::triggered, this, &MainWindow::antFind);
 
-    switch_shahe = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/switch_shahe"),"切换到沙河", this);
+    switch_shahe = new QAction(QIcon("../NAV/images/switch_shahe"),"切换到沙河", this);
     switch_shahe->setStatusTip ("切换到沙河");
     connect(switch_shahe, &QAction::triggered, this, &MainWindow::switchShahe);
 
-    switch_between = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/switch_between"),"切换到校外", this);
+    switch_between = new QAction(QIcon("../NAV/images/switch_between"),"切换到校外", this);
     switch_between->setStatusTip ("切换到校外");
     connect(switch_between, &QAction::triggered, this, &MainWindow::switchBetween);
 
-    switch_benbu = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/switch_benbu"),"切换到本部", this);
+    switch_benbu = new QAction(QIcon("../NAV/images/switch_benbu"),"切换到本部", this);
     switch_benbu->setStatusTip ("切换到本部");
     connect(switch_benbu, &QAction::triggered, this, &MainWindow::switchBenbu);
 
-    set_time = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/set_time"),"设置时间", this);
+    set_time = new QAction(QIcon("../NAV/images/set_time"),"设置时间", this);
     set_time->setStatusTip ("设置时间");
     connect(set_time, &QAction::triggered, this, &MainWindow::setTime);
 
-    log_search = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/log"),"日志搜索", this);
+    log_search = new QAction(QIcon("../NAV/images/log"),"日志搜索", this);
     log_search->setStatusTip("日志搜索");
     connect(log_search, &QAction::triggered, this, &MainWindow::logSearch);
 
-    go_to_class = new QAction(QIcon("/mySoftware/C++Qt/myProject/NAV/images/class"),"导航去教室", this);
+    go_to_class = new QAction(QIcon("../NAV/images/class"),"导航去教室", this);
     go_to_class->setStatusTip("导航去教室");
     connect(go_to_class, &QAction::triggered, this, &MainWindow::gotoClass);
 
-    //qDebug()<<"init action down"<<endl;
+    qDebug()<<"init action down";
 }
 
 void MainWindow::initToolBar() {
@@ -584,7 +584,7 @@ void MainWindow::initToolBar() {
     toolbar->addSeparator();
     toolbar->addAction(log_search);
 
-    //qDebug()<<"init tool bar down"<<endl;
+    qDebug()<<"init tool bar down";
 }
 
 void MainWindow::initTimer() {
@@ -592,7 +592,7 @@ void MainWindow::initTimer() {
     connect(tmr_clock, SIGNAL(timeout()), this, SLOT(clock_slot()));
     tmr_clock->start(167);
 
-    //qDebug()<<"init timer down"<<endl;
+    qDebug()<<"init timer down";
 }
 
 //每次超时系统时间更新,同时显示出新的时间
@@ -1885,7 +1885,7 @@ void MainWindow::antfindStart() {
 
             }
         }
-        //qDebug()<<"shahe bus abmap done"<<endl;
+        qDebug()<<"shahe bus abmap done";
 
         //遍历ant_shahe_spots_shuttle
         for(int i = 0; i<ant_shahe_spots_shuttle.size(); i++) {
@@ -1901,7 +1901,7 @@ void MainWindow::antfindStart() {
                 abmap_time_shuttle[ant_shahe_spots_shuttle[i]][ant_shahe_spots_shuttle[j]] = dij;
             }
         }
-        //qDebug()<<"shahe shuttle abmap done"<<endl;
+        qDebug()<<"shahe shuttle abmap done";
 
         //遍历ant_benbu_spots_bus
         for(int i = 0; i<ant_benbu_spots_bus.size(); i++) {
@@ -1917,7 +1917,7 @@ void MainWindow::antfindStart() {
                 abmap_time_bus[ant_benbu_spots_bus[i]][ant_benbu_spots_bus[j]] = dij;
             }
         }
-        //qDebug()<<"benbu bus abmap done"<<endl;
+        qDebug()<<"benbu bus abmap done";
 
         //遍历ant_benbu_spots_shuttle
         for(int i = 0; i<ant_benbu_spots_shuttle.size(); i++) {
@@ -1933,7 +1933,7 @@ void MainWindow::antfindStart() {
                 abmap_time_shuttle[ant_benbu_spots_shuttle[i]][ant_benbu_spots_shuttle[j]] = dij;
             }
         }
-        //qDebug()<<"benbu shuttle abmap done"<<endl;
+        qDebug()<<"benbu shuttle abmap done";
 
         //bus
         for(int i = 0; i<ant_shahe_spots_bus.size(); i++) {
@@ -1964,7 +1964,7 @@ void MainWindow::antfindStart() {
                 dij_dis.set_dij_path(tmp1);
                 abmap_dis_bus[ant_shahe_spots_bus[i]][ant_benbu_spots_bus[j]] = dij_dis;
 
-                //qDebug()<<"i("<<i<<") to j("<<j<<") dis"<<endl;
+                qDebug()<<"i("<<i<<") to j("<<j<<") dis";
 
                 //从j到i(dis)
                 dij_dis.set_begin(ant_benbu_spots_bus[j]);
@@ -1985,7 +1985,7 @@ void MainWindow::antfindStart() {
                 dij_dis.set_dij_path(tmp2);
                 abmap_dis_bus[ant_benbu_spots_bus[j]][ant_shahe_spots_bus[i]] = dij_dis;
 
-                //qDebug()<<"j("<<j<<") to i("<<i<<") dis"<<endl;
+                qDebug()<<"j("<<j<<") to i("<<i<<") dis";
 
                 //从i到j(time)
                 dij_time.set_begin(ant_shahe_spots_bus[i]);
@@ -2006,7 +2006,7 @@ void MainWindow::antfindStart() {
                 dij_time.set_dij_path(tmp3);
                 abmap_time_bus[ant_shahe_spots_bus[i]][ant_benbu_spots_bus[j]] = dij_time;
 
-                //qDebug()<<"i("<<i<<") to j("<<j<<") time"<<endl;
+                qDebug()<<"i("<<i<<") to j("<<j<<") time";
 
                 //从j到i(time)
                 dij_time.set_begin(ant_benbu_spots_bus[j]);
@@ -2027,11 +2027,11 @@ void MainWindow::antfindStart() {
                 dij_time.set_dij_path(tmp4);
                 abmap_time_bus[ant_benbu_spots_bus[j]][ant_shahe_spots_bus[i]] = dij_time;
 
-                //qDebug()<<"j("<<j<<") to i("<<i<<") time"<<endl;
+                qDebug()<<"j("<<j<<") to i("<<i<<") time";
 
             }
         }
-        //qDebug()<<"bus all cross abmap done"<<endl;
+        qDebug()<<"bus all cross abmap done";
 
         //shuttle
         for(int i = 0; i<ant_shahe_spots_shuttle.size(); i++) {
@@ -2117,7 +2117,7 @@ void MainWindow::antfindStart() {
                 abmap_time_shuttle[ant_benbu_spots_shuttle[j]][ant_shahe_spots_shuttle[i]] = dij;
             }
         }
-        //qDebug()<<"shuttle all cross abmap done"<<endl;
+        qDebug()<<"shuttle all cross abmap done";
 
         //为ant设置abmap
         ant_dis_bus.set_abmap(abmap_dis_bus);
@@ -2137,7 +2137,7 @@ void MainWindow::antfindStart() {
         ant_time_bus.start(ant_spots_bus,Pr_Time);
         ant_time_shuttle.start(ant_spots_shuttle,Pr_Time);
 
-        //qDebug()<<"4 antfind done"<<endl;
+        qDebug()<<"4 antfind done";
 
         //分割路段
         //首先初始化
@@ -2179,7 +2179,7 @@ void MainWindow::antfindStart() {
                 tmp_rout_dis_bus.append(ver);
             }
         }
-        //qDebug()<<"ant_dis_bus convert to path done"<<endl;
+        qDebug()<<"ant_dis_bus convert to path done";
 
         for(int i = 1; i<ant_dis_shuttle.get_min_rout_inall().size(); i++) {
             if(!tmp_rout_dis_shuttle.isEmpty()) tmp_rout_dis_shuttle.pop_back();
@@ -2187,7 +2187,7 @@ void MainWindow::antfindStart() {
                 tmp_rout_dis_shuttle.append(ver);
             }
         }
-        //qDebug()<<"ant_dis_shuttle convert to path done"<<endl;
+        qDebug()<<"ant_dis_shuttle convert to path done";
 
         for(int i = 1; i<ant_time_bus.get_min_rout_inall().size(); i++) {
             if(!tmp_rout_time_bus.isEmpty()) tmp_rout_time_bus.pop_back();
@@ -2195,7 +2195,7 @@ void MainWindow::antfindStart() {
                 tmp_rout_time_bus.append(ver);
             }
         }
-        //qDebug()<<"ant_time_bus convert to path done"<<endl;
+        qDebug()<<"ant_time_bus convert to path done";
 
         for(int i = 1; i<ant_time_shuttle.get_min_rout_inall().size(); i++) {
             if(!tmp_rout_time_shuttle.isEmpty()) tmp_rout_time_shuttle.pop_back();
@@ -2248,7 +2248,7 @@ void MainWindow::antfindStart() {
                 }
             }
         }
-        //qDebug()<<"dis_bus split done"<<endl;
+        qDebug()<<"dis_bus split done";
 
         //dis_shuttle
         if(inShahe(tmp_rout_dis_shuttle[0]->get_no())) {
@@ -2262,7 +2262,7 @@ void MainWindow::antfindStart() {
                     ant_shahe_t_dis_shuttle += adj_map[l][r]->get_distance()/adj_map[l][r]->get_crowdness()*velocity;
                 }
             }
-            //qDebug()<<"1 "<<endl;
+            qDebug()<<"1 ";
 
             for(int i = 0; inBenbu(tmp_rout_dis_shuttle[tmp_rout_dis_shuttle.size()-1-i]->get_no()); i++) {
                 ant_path_benbu_dis_shuttle.prepend(tmp_rout_dis_shuttle[tmp_rout_dis_shuttle.size()-1-i]);
@@ -2273,7 +2273,7 @@ void MainWindow::antfindStart() {
                     ant_benbu_t_dis_shuttle += adj_map[l][r]->get_distance()/adj_map[l][r]->get_crowdness()*velocity;
                 }
             }
-            //qDebug()<<"2"<<endl;
+            qDebug()<<"2";
         } else {
             for(int i = 0; inBenbu(tmp_rout_dis_shuttle[i]->get_no()); i++) {
                 ant_path_benbu_dis_shuttle.prepend(tmp_rout_dis_shuttle[i]);
@@ -2284,7 +2284,7 @@ void MainWindow::antfindStart() {
                     ant_benbu_t_dis_shuttle += adj_map[l][r]->get_distance()/adj_map[l][r]->get_crowdness()*velocity;
                 }
             }
-            //qDebug()<<"3"<<endl;
+            qDebug()<<"3";
 
             for(int i = 0; inShahe(tmp_rout_dis_shuttle[tmp_rout_dis_shuttle.size()-1-i]->get_no()); i++) {
                 ant_path_shahe_dis_shuttle.append(tmp_rout_dis_shuttle[tmp_rout_dis_shuttle.size()-1-i]);
@@ -2296,7 +2296,7 @@ void MainWindow::antfindStart() {
                 }
             }
         }
-        //qDebug()<<"dis_shuttle split done"<<endl;
+        qDebug()<<"dis_shuttle split done";
 
         //time_bus
         if(inShahe(tmp_rout_time_bus[0]->get_no())) {
@@ -2339,7 +2339,7 @@ void MainWindow::antfindStart() {
                 }
             }
         }
-        //qDebug()<<"time_bus split done"<<endl;
+        qDebug()<<"time_bus split done";
 
         //time_shuttle
         if(inShahe(tmp_rout_time_shuttle[0]->get_no())) {
@@ -2382,7 +2382,7 @@ void MainWindow::antfindStart() {
                 }
             }
         }
-        //qDebug()<<"time_shuttle split done"<<endl;
+        qDebug()<<"time_shuttle split done";
 
         //设置中间路段
         dij_second_bus.set_dij_path(s2b_bus_path);

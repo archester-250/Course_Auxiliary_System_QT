@@ -37,3 +37,9 @@ void SystemChoose::receiveName(QString s)
     name = s;
 }
 
+
+void SystemChoose::on_pushButton_clicked()
+{
+    system("start NAV.EXE");
+}
+

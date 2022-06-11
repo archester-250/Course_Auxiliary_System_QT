@@ -27,6 +27,8 @@ private slots:
 
     void receiveName(QString s);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::SystemChoose *ui;
     QString name;
