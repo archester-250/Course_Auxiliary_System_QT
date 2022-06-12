@@ -10,6 +10,7 @@ UploadHomework::UploadHomework(QWidget *parent) :
     ui->label_3->setText(text);
     ui->spinBox->setMinimum(1);
     ui->spinBox->setMaximum(1);
+    ui->pushButton_3->setEnabled(false);
 }
 
 UploadHomework::~UploadHomework()
@@ -23,6 +24,7 @@ void UploadHomework::on_pushButton_2_clicked()
     QString text = QString::fromStdString("当前文件为:") + filename;
     ui->label_3->setText(text);
     ui->label_3->adjustSize();
+    ui->pushButton_3->setEnabled(true);
 }
 
 void UploadHomework::receiveName(QString name)
@@ -36,10 +38,14 @@ void UploadHomework::on_lineEdit_editingFinished()
     QString courseName = ui->lineEdit->text();
     Student s(name.toStdString());
     c = s.searchCourse(s.getCourses(), s.getCourseSize(), courseName.toStdString());
-    if(c.getName() != "null")
+    if(c.getName() != "null" && c.getHomeWorkSize())
     {
         ui->spinBox->setMaximum(c.getHomeWorkSize());
         stuName = s.getName();
+    }
+    else if(c.getHomeWorkSize() == 0)
+    {
+        QMessageBox::information(NULL, "提醒", "该课程未发布作业!");
     }
     else
     {

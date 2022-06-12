@@ -51,6 +51,7 @@ void AddHomework::on_pushButton_2_clicked()
         return;
     }
     a.addHomework(courseName, homework);
+    QMessageBox::information(NULL, "success", "成功添加作业！");
     qDebug() << "[LOG] administer " << name << " adds homework " << QString::fromStdString(homework)
              << " to " << QString::fromStdString(courseName) << QString::fromStdString(modtime.toString());
     a.saveAdminInfo();

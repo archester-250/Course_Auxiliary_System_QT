@@ -252,7 +252,7 @@ void course::uploadHomework(string road, string stuName, int no)
             }
             return;
         }
-        if(OurStr::getSuffix(road) == "txt")
+        if(OurStr::getSuffix(road) == "txt" || OurStr::getSuffix(road) == "TXT")
         {
             string outRoad = "..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no + 1) + "\\" +  OurStr::getFilename(road).substr(0, OurStr::getFilename(road).rfind('.'));
             compression c;
@@ -270,7 +270,7 @@ void course::uploadHomework(string road, string stuName, int no)
         }
         else
         {
-            string cmd = "copy " + road + " ..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no + 1) + "\\" +  OurStr::getFilename(road);
+            string cmd = "copy \"" + road + "\" ..\\documents\\users\\" + stuName + "\\" + name + "\\" + to_string(no + 1) + "\\" +  OurStr::getFilename(road);
             system(cmd.c_str());
             finish_con[no].finish = true;
             finish_con[no].road = OurStr::getFilename(road);

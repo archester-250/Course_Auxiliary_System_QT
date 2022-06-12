@@ -53,7 +53,7 @@ void AddCourseDoc::on_pushButton_2_clicked()
             return;
         }
     }
-    if(OurStr::getSuffix(filename.toStdString()) == "txt")
+    if(OurStr::getSuffix(filename.toStdString()) == "txt" || OurStr::getSuffix(filename.toStdString()) == "TXT")
     {
         string outRoad = "..\\documents\\public\\" + course_name + "\\" + OurStr::getFilename(filename.toStdString()).substr(0, OurStr::getFilename(filename.toStdString()).length() - 4);
         compression com;
@@ -68,7 +68,7 @@ void AddCourseDoc::on_pushButton_2_clicked()
     }
     else
     {
-        string cmd = "copy " + filename.toStdString() + " ..\\documents\\public\\" + course_name;
+        string cmd = "copy \"" + filename.toStdString() + "\" ..\\documents\\public\\" + course_name;
         system(cmd.c_str());
         QMessageBox::information(NULL, "提示", "非压缩上传成功！");
     }
