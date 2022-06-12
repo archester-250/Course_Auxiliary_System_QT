@@ -18,14 +18,23 @@ void SearchCourse::on_pushButton_2_clicked()
 {
     QString courseName = ui->lineEdit->text();
     Student s(name.toStdString());
-    course c;
-    c = s.searchCourse(s.getCourses(), s.getCourseSize(), courseName.toStdString());
-    if(c.getName() != "null")
+    vector<string> results;
+    for(int z = 0; z < s.getCourseSize(); z++)
     {
+        if(OurStr::SundaySearch(s.getCourses()[z].getName(), courseName.toStdString()) != -1)
+        {
+            results.push_back(s.getCourses()[z].getName());
+        }
+    }
+    results = OurStr::Quick_Sort(results, 0, results.size() - 1);
+    for(int z = 0; z < results.size(); z++)
+    {
+        course c;
+        c = s.searchCourse(s.getCourses(), s.getCourseSize(), results[z]);
         ui->textBrowser->show();
         QString text;
         string weekday[7] = {"周一", "周二", "周三", "周四", "周五", "周六", "周日"};
-        text += "课程名称：" + courseName + '\n';
+        text += QString::fromStdString("课程名称：" + results[z] + "\n");
         text += "上课时间：\n";
         for(int i = 0; i < c.getTimeSize(); i++)
         {
@@ -49,11 +58,8 @@ void SearchCourse::on_pushButton_2_clicked()
         text += QString::fromStdString("考试地点：" + c.getExaddress());
         ui->textBrowser->insertPlainText(text);
     }
-    else
-    {
-        QMessageBox::information(NULL, "无结果", "无对应课程！");
-    }
-    qDebug() << "[LOG] student " << name << " tries to search course " << courseName << QString::fromStdString(modtime.toString());
+    if(results.size() == 0) QMessageBox::information(NULL, "无结果", "无对应课程！");
+    qDebug() << "[LOG] student " << name << " tries to search keyword " << courseName << QString::fromStdString(modtime.toString());
 }
 
 void SearchCourse::receiveName(QString name)

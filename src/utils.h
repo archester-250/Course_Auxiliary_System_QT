@@ -174,6 +174,58 @@ class OurStr
             }
             return path.substr(i + 1);
         }
+
+        static int SundaySearch(string text, string pattern) {
+            int i = 0;
+            int j = 0;
+            int k;
+            int m = pattern.size();
+            if (text.size() <= 0 || m <= 0) return -1;
+            for (; i <text.size();) {
+                if (text[i] != pattern[j]) {
+                    for (k = pattern.size() - 1; k >= 0; k--)
+                    {
+                        if (pattern[k] == text[m])
+                            break;
+                    }
+                    i = m - k;
+                    j = 0;
+                    m = i + pattern.size();
+                }
+                else {
+                    if (j == pattern.size()-1)
+                        return i - j;
+                    i++;
+                    j++;
+                }
+            }
+            return -1;
+        }
+
+        static vector<string> Quick_Sort(vector<string> arr, int begin, int end){
+            if(begin > end)
+                return arr;
+            string tmp = arr[begin];
+            int i = begin;
+            int j = end;
+            while(i != j){
+                while(arr[j] >= tmp && j > i)
+                    j--;
+                while(arr[i] <= tmp && j > i)
+                    i++;
+                if(j > i){
+                    string t = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = t;
+                }
+            }
+            arr[begin] = arr[i];
+            arr[i] = tmp;
+            Quick_Sort(arr, begin, i-1);
+            Quick_Sort(arr, i+1, end);
+            return arr;
+        }
+
 };
 
 class Files
