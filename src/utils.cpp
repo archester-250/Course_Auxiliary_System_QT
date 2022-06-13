@@ -41,7 +41,7 @@ void Time::incre(int h) {
             auto clockCheck = student->getClocks()->get(modtime.timeStamp());
             if (clockCheck->first) {
                 for (int i = 0; i < clockCheck->second.info->size; i++){
-                    cout << "[事件提醒]" << clockCheck->second.info->get(i) << endl;
+                    cout << "[clock]" << clockCheck->second.info->get(i) << endl;
                     QMessageBox::information(NULL, "闹钟", QString::fromStdString(clockCheck->second.info->get(i)));
                     }
         }

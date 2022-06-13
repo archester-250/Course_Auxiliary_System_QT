@@ -36,7 +36,7 @@ void AddClock::on_pushButton_2_clicked()
         rep = ui->cnt->text().toInt();
         string description = ui->content->text().toStdString();
 
-        for (int i = 0; i < rep; i++) {
+        for (int i = 0; i < rep - 1; i++) {
             Clock clock;
             clock.setTimestamp(time.timeStamp());
             clock.addEvent(description);
@@ -48,7 +48,15 @@ void AddClock::on_pushButton_2_clicked()
             _config << clock.timestamp << " " << description << endl;
             _config.close();
         }
-        QMessageBox::information(NULL, "已添加，最后一次提醒是", QString::fromStdString(time.toString()));
+        Clock clock;
+        clock.setTimestamp(time.timeStamp());
+        clock.addEvent(description);
+        student->getClocks()->put(time.timeStamp(), clock);
+        qDebug() << "[LOG] student " << name << " adds clock of " << QString::fromStdString(time.toString()) << QString::fromStdString(modtime.toString());
+        ofstream _config("../database/clocks/" + student->getName(), ios::app);
+        _config << clock.timestamp << " " << description << endl;
+        _config.close();
+        QMessageBox::information(NULL, "已添加", QString::fromStdString("最后一次提醒是" + time.toString()));
         return;
 }
 
