@@ -495,7 +495,7 @@ void Student::InitStudent() {
         }
         Activities->size++;
         for (int j = Activities->getSize() - 1; j >= i; j--){
-            Activities->vals[i + 1] = Activities->vals[i];
+            Activities->vals[j + 1] = Activities->vals[j];
         }
         Activities->vals[i] = activity;		
     }
