@@ -487,8 +487,17 @@ void Student::InitStudent() {
                 clocks->put(time.timeStamp(), clock);
             }
         }
-//        clog << "读取本地活动：" << activity.toString() << endl;
-        Activities->push(activity);
+		int i = 0;
+        for (i = 0; i < Activities->getSize(); i++){
+            if (Activities->get(i).getStartTime().timeStamp() < startTime){
+                break;
+            }
+        }
+        Activities->size++;
+        for (int j = Activities->getSize() - 1; j >= i; j--){
+            Activities->vals[i + 1] = Activities->vals[i];
+        }
+        Activities->vals[i] = activity;		
     }
     db.close();
     db = ifstream("../database/clocks/" + student->name);

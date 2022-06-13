@@ -11,9 +11,8 @@ using namespace std;
 
 template<class T>
 class Array{
-private:
-    T* vals;
 public:
+    T* vals;
     int size;
     int maxSize;
     Array(int _size) {
