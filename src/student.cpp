@@ -515,7 +515,8 @@ void Student::showActivities(bool today) {
     int sz = Activities->size;
     for (int i = sz - 1; i >= 0; i--) {
         Activity activity = Activities->get(i);
-        if (today && activity.getStartTime().day != modtime.day) {
+        if (today && (activity.getStartTime().day != modtime.day || activity.getStartTime().mn != modtime.mn ||\
+            activity.getStartTime().yr != modtime.yr) ) {
             continue;
         }
         cout << Activities->get(i).toString() << endl;

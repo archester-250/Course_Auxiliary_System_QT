@@ -28,9 +28,10 @@ void SeeTodayActivities::receiveName(QString name)
     int sz = student->getActivityArray()->size;
     for (int i = 0; i < sz; i++) {
         Activity activity = student->getActivityArray()->get(i);
-        if (activity.getStartTime().day != modtime.day) {
-                    continue;
-               }
+        if (activity.getStartTime().day != modtime.day || activity.getStartTime().mn != modtime.mn ||\
+            activity.getStartTime().yr != modtime.yr) {
+            continue;
+        }
         text += text.number(i) + "." + text.fromStdString(activity.toString()) + "\n";
     }
 
