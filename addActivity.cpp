@@ -37,29 +37,29 @@ void AddActivity::on_pushButton_2_clicked()
         activity.setAddress(ui->address->text().toStdString());
         activity.setDescription(ui->description->text().toStdString());
         activity.setClk(ui->Clock->text().toInt());
-        if (time_conflict(startTime.timeStamp())){
-                return;
-        }
-        if (clk >= 0) {
-            Time time = startTime.desc(clk);
-            if (student->getClocks()->get(time.timeStamp())->first) {
-                student->getClocks()->get(time.timeStamp())->second.addEvent(activity.toString());
-            } else {
-                Clock clock;
-                clock.setTimestamp(time.timeStamp());
-                clock.addEvent(activity.toString());
-                student->getClocks()->put(time.timeStamp(), clock);
+        if (!time_conflict(startTime.timeStamp())){
+            if (clk >= 0) {
+                Time time = startTime.desc(clk);
+                if (student->getClocks()->get(time.timeStamp())->first) {
+                    student->getClocks()->get(time.timeStamp())->second.addEvent(activity.toString());
+                } else {
+                    Clock clock;
+                    clock.setTimestamp(time.timeStamp());
+                    clock.addEvent(activity.toString());
+                    student->getClocks()->put(time.timeStamp(), clock);
+                }
             }
-        }
+
 //        clog << name.toStdString() << "添加事件：" << activity.toString() << endl;
-        qDebug() << "[LOG] student " << name << " adds activity " << QString::fromStdString(modtime.toString());
-        ofstream _config("../database/activities/" + student->getName(), ios::app);
-        _config << activity.storeStr() << endl;
-        _config.close();
-        storeStr = activity.storeStr();
-        student->getActivityArray()->push(activity);
-        QMessageBox::information(NULL, "已添加", QString::fromStdString(activity.toString()));
-}
+            qDebug() << "[LOG] student " << name << " adds activity " << QString::fromStdString(modtime.toString());
+            ofstream _config("../database/activities/" + student->getName(), ios::app);
+            _config << activity.storeStr() << endl;
+            _config.close();
+            storeStr = activity.storeStr();
+            student->getActivityArray()->push(activity);
+            QMessageBox::information(NULL, "已添加", QString::fromStdString(activity.toString()));
+            }
+ }
 
 void AddActivity::on_pushButton_add_clicked(){
     if (storeStr == "NULL"){

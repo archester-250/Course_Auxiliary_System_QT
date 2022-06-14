@@ -1,5 +1,12 @@
 ﻿#include "systemchoose.h"
 #include "ui_systemchoose.h"
+#include "src/utils.h"
+#include "src/hashMap.h"
+#include "src/activity.h"
+#include "src/student.h"
+#include "src/course.h"
+#include "src/login.h"
+#include "src/input.h"
 
 SystemChoose::SystemChoose(QWidget *parent) :
     QDialog(parent),
@@ -30,6 +37,11 @@ void SystemChoose::on_pushButton_2_clicked()
     connect(this, SIGNAL(sendName(QString)), &ooc, SLOT(receiveName(QString)));
     emit sendName(name);
     ooc.exec();
+}
+
+void SystemChoose::on_pushButton_4_clicked()
+{
+    student = nullptr;
 }
 
 void SystemChoose::receiveName(QString s)

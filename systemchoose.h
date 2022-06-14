@@ -25,6 +25,8 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_4_clicked();
+
     void receiveName(QString s);
 
     void on_pushButton_clicked();

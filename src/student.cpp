@@ -32,21 +32,23 @@ bool time_conflict(int timestamp){
     Time tmp;
     tmp.inputTime(timestamp);
     for (int i = 0; i < student->getCourseSize(); i++){
-        course cse = student->getCourses()[i];
-        if (tmp.calculateWeekDay() == cse.getTime()->week &&\
-            tmp.hr >= cse.getTime()->starthour && \
-            tmp.hr < cse.getTime()->endhour) {
-            cout << "时间与课程" << cse.getName() << "冲突" << endl;
-            QMessageBox::information(NULL, "CONFLICT", "To course" + QString::fromStdString(cse.getName()));
-            return true;
-        }
+        course cse;
+        cse = student->getCourses()[i];
+        for (int j = 0; j < cse.getTimeSize(); j++){
+                    if (tmp.calculateWeekDay() == cse.getTime()[j].week &&\
+                    tmp.hr >= cse.getTime()->starthour && \
+                    tmp.hr < cse.getTime()->endhour) {
+                        cout << "时间与课程" << cse.getName() << "冲突" << endl;
+                        return true;
+                    }
+                }
     }
-    for (int i = 0; i < len; i++){
+    for (int i = len - 1; i >= 0; i--){
         Activity activity = student->getActivityArray()->get(i);
         if (timestamp >= activity.getStartTime().timeStamp() && \
             timestamp < activity.getEndTime().timeStamp()) {
-            QMessageBox::information(NULL, "CONFILICT", "To activity" + QString::fromStdString(activity.toString()));
-            cout << "时间与" << activity.toString() << "冲突" << endl;
+            QMessageBox::information(NULL, "CONFILICT", "To activity " + QString::fromStdString(activity.toString()));
+//            cout << "时间与" << activity.toString() << "冲突" << endl;
             return true;
         }
     }
@@ -416,7 +418,6 @@ int Student::showActivityMenu() {
     int choice;
     do {
         updateTime();
-        //亮神finish
         printf("欢迎进入活动管理系统!请选择要进行的操作:\n");
         cout << "1.增加事件" << endl;
         cout << "2.事件一览(全部)" << endl;
@@ -489,7 +490,7 @@ void Student::InitStudent() {
         }
 		int i = 0;
         for (i = 0; i < Activities->getSize(); i++){
-            if (Activities->get(i).getStartTime().timeStamp() < startTime){
+            if (Activities->get(i).getStartTime().timeStamp() > startTime){
                 break;
             }
         }
@@ -512,7 +513,7 @@ void Student::InitStudent() {
 
 void Student::showActivities(bool today) {
     int sz = Activities->size;
-    for (int i = 0; i < sz; i++) {
+    for (int i = sz - 1; i >= 0; i--) {
         Activity activity = Activities->get(i);
         if (today && activity.getStartTime().day != modtime.day) {
             continue;
