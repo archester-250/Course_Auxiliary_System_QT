@@ -55,7 +55,7 @@ void SearchCourse::on_pushButton_2_clicked()
         }
         text += QString::fromStdString("课程QQ群：" + c.getQQGroup() + "\n");
         text += QString::fromStdString("考试时间：" + c.getExtime().toString() + "\n");
-        text += QString::fromStdString("考试地点：" + c.getExaddress());
+        text += QString::fromStdString("考试地点：" + c.getExaddress() + "\n\n");
         ui->textBrowser->insertPlainText(text);
     }
     if(results.size() == 0) QMessageBox::information(NULL, "无结果", "无对应课程！");

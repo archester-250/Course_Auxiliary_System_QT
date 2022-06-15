@@ -232,7 +232,10 @@ void course::uploadHomework(string road, string stuName, int no)
     string md5str = "";
     for(int i = 0; i < 16; i++)
     {
-        md5str += decrypt[i];
+        if(decrypt[i] != ' ' && decrypt[i] != '\n' && decrypt[i] != '\r')
+        {
+            md5str += decrypt[i];
+        }
     }
     if(!OurStr::StrCmp(md5str, finish_con[no].MD5))
     {
@@ -250,7 +253,6 @@ void course::uploadHomework(string road, string stuName, int no)
                 system(("del " + inroad).c_str());
                 QMessageBox::information(NULL, "通知", "覆盖成功！");
             }
-            return;
         }
         if(OurStr::getSuffix(road) == "txt" || OurStr::getSuffix(road) == "TXT")
         {
