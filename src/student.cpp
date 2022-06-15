@@ -280,7 +280,7 @@ void Student::showDoc()
 
 void Student::showTodayCourse() {
     cout << "今天是" << modtime.yr << "年" << modtime.mn << "月" << modtime.day << "日,星期";
-    string week[7] = {"日", "一", "二", "三", "四", "五", "六"};
+    string week[7] = {"一", "二", "三", "四", "五", "六", "日"};
     int weekDay = modtime.calculateWeekDay();
     cout << week[weekDay] << endl;
     for (int i = 0; i < course_size; i++) {
@@ -300,7 +300,7 @@ void Student::courseTable() {
     for (int i = 0; i < course_size; i++) {
         for (int j = 0; j < courses[i].getTimeSize(); j++) {
             for (int k = courses[i].getTime()[j].starthour; k <= courses[i].getTime()[j].endhour; k++) {
-                table[k - 8][(courses[i].getTime()[j].week + 6) % 7] = courses[i].getName();
+                table[k - 8][courses[i].getTime()[j].week] = courses[i].getName();
             }
         }
     }
